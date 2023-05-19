@@ -9,6 +9,7 @@ function HomeScreen({ navigation }) {
       <TouchableOpacity>
         <Card>
           <Text style={{fontSize: 18, fontWeight: 'bold'}}>About Me</Text>
+          <Text>123</Text>
         </Card>
       </TouchableOpacity>
     </View>
