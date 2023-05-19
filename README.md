@@ -5,6 +5,10 @@
 - Header
 - Tab
   - Home
+    - Data:
+      1. type
+      2. amount
+      3. behavior: income or expenditure
   - Review Details
   - Chart
   - Helper
