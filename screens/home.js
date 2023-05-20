@@ -7,7 +7,7 @@ import ModuleCard from "../shared/ModuleCard";
 import Bar from "../shared/bar";
 import { Fontisto } from '@expo/vector-icons';
 
-//判断数据是否为今日的函数
+//判断数据是否为今日数据的函数
 function judgeToday(currentDate, date) {
     const year = currentDate.getFullYear();
     const month = currentDate.getMonth() + 1;
@@ -151,7 +151,7 @@ const styles = StyleSheet.create({
         marginBottom: 10,
     },
     colorfulText: {
-        color: '#F5A80F',
+        color: '#F76666',
         fontWeight: 700,
         fontSize: 28,
     },
@@ -160,8 +160,8 @@ const styles = StyleSheet.create({
         fontSize: 16,
         textAlignVertical: 'center',
         marginLeft: 10,
-        marginBottom: 5,
-        color: 'rgb(80, 80, 80)',
+        marginBottom: 2,
+        color: '#F76666',
     },
     title: {
         fontWeight: 700,
@@ -180,7 +180,7 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
         justifyContent: 'space-between',
-        height: 80,
+        height: 74,
         paddingHorizontal: 5,
     },
     info: {
