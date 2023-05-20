@@ -11,7 +11,6 @@ export default function Card(props) {
 
 const styles = StyleSheet.create({
     item: {
-        opacity: 0.9,
         backgroundColor: '#fff',
         paddingLeft: 8,
         paddingRight: 15,
