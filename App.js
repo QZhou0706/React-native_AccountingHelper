@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
 import HomeStack from './routes/homestack';
 import SettingsDrawer from './routes/drawer';
+import BottomTab from './routes/bottomTab';
 
 export default function App() {
 

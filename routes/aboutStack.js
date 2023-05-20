@@ -7,12 +7,10 @@ const Stack = createStackNavigator();
 
 function AboutStack() {
   return (
-    <Stack.Navigator>
-      <Stack.Screen name="About" component={About} options={({ navigation }) => {
-        return {
-          headerTitle: () => <Header navigation={navigation} title='About' />,
-        }
-      }} />
+    <Stack.Navigator screenOptions={{
+      headerShown: false,
+    }}>
+      <Stack.Screen name="About" component={About} />
     </Stack.Navigator>
   );
 };

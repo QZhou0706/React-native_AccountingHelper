@@ -8,12 +8,10 @@ const Stack = createStackNavigator();
 
 function HomeStack() {
   return (
-    <Stack.Navigator>
-      <Stack.Screen name="Home" component={Home} options={({ navigation }) => {
-        return {
-          headerTitle: () => <Header navigation={navigation} title='Home' />
-        }
-      }} />
+    <Stack.Navigator screenOptions={{
+      headerShown: false,
+    }}>
+      <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="ReviewDetails" component={ReviewDetails} />
     </Stack.Navigator>
   );

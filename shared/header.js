@@ -1,21 +1,19 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { MaterialIcons } from '@expo/vector-icons';
-import { Dimensions } from "react-native";
 
-const ScreenWidth = Dimensions.get('window').width;
 
 export default function Header({ navigation, title }) {
   const openMenu = () => {
     navigation.openDrawer();
   }
   return (
-    <View style={styles.header}>
-      <MaterialIcons name='menu' size={28} onPress={openMenu} style={styles.icon} />
-      <View>
-        <Text style={styles.headerText}>{title}</Text>
+      <View style={styles.header}>
+        <MaterialIcons name='menu' size={28} onPress={openMenu} style={styles.icon} />
+        <View>
+          <Text style={styles.headerText}>{title}</Text>
+        </View>
       </View>
-    </View>
   );
 }
 
@@ -36,5 +34,9 @@ const styles = StyleSheet.create({
   icon: {
     position: 'absolute',
     left: 16,
+  },
+  image: {
+    flex: 1,
+    justifyContent: 'center',
   },
 })
