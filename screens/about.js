@@ -8,10 +8,13 @@ function HomeScreen({ navigation }) {
       <View style = {styles.titleWrapper}>
         <Text style = {styles.title}>AccountingHelper</Text>
         <Text style = {styles.text}>version 1.0.0</Text>
-        <Text style = {styles.text}>author: Aric Daintryy Zgoofy</Text>
+        <View style = {styles.authorInfo}>
+          <Text style = {[styles.text, {color: 'rgb(110, 110, 110)'}]}>author: </Text>
+          <Text style = {styles.text}>Aric  Daintryy  Zgoofy</Text>
+        </View>
       </View>
       <View style = {styles.contentWrapper}>
-        <Text style = {styles.text}>some descrision of our app...</Text>
+        <Text style = {[styles.text, {fontSize: 18}]}>some descrision of our app...</Text>
       </View>
     </View>
   );
@@ -33,8 +36,12 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontWeight: 700,
     fontSize: 28,
-    marginTop: 40,
+    marginTop: 35,
     marginBottom: 20,
+  },
+  authorInfo: {
+    flexDirection: 'row',
+    justifyContent: 'center',
   },
   contentWrapper: {
     flex: 1,
@@ -42,7 +49,7 @@ const styles = StyleSheet.create({
   },
   text: {
     textAlign: 'center',
-    fontSize: 18,
+    fontSize: 16,
   }
 })
 
