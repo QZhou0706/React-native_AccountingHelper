@@ -35,6 +35,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
         textAlignVertical: 'center',
         marginLeft: 8,
+        fontFamily: 'nunito-regular',
         color: 'rgb(80, 80, 80)',
     },
     rectangle: {
