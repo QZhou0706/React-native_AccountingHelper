@@ -3,9 +3,7 @@ import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
 
-import HomeStack from './routes/homestack';
-import SettingsDrawer from './routes/drawer';
-import BottomTab from './routes/bottomTab';
+import TabNavigator from './routes/tab';
 
 export default function App() {
 
@@ -26,7 +24,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <SettingsDrawer />
+      <TabNavigator />
     </NavigationContainer>
   );
 

@@ -2,14 +2,14 @@ import { View, Text } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import CustomDrawer from './src/customDrawer';
 import IonIcons from 'react-native-vector-icons/Ionicons';
-import { HeaderLeft, Header } from '../shared/header';
+import Header from '../shared/header';
 
 import HomeStack from './homestack';
 import AboutStack from './aboutStack';
 
 const Drawer = createDrawerNavigator();
 
-function SettingsDrawer() {
+function DrawerNavigator() {
   return (
     <Drawer.Navigator
       useLegacyImplementation
@@ -30,16 +30,16 @@ function SettingsDrawer() {
     >
       <Drawer.Screen name='HomeStack' component={HomeStack} options={({ navigation }) => {
         return {
-          drawerIcon: ({ color }) => (
-            <IonIcons name='home-outline' size={20} color={color} />
+          drawerIcon: ({ color, size }) => (
+            <IonIcons name='home-outline' color={color} size={size} />
           ),
           header: () => <Header navigation={navigation} title='Home' />,
         }
       }} />
       <Drawer.Screen name="AboutStack" component={AboutStack} options={({ navigation }) => {
         return {
-          drawerIcon: ({ color }) => (
-            <IonIcons name='document-text-outline' size={20} color={color} />
+          drawerIcon: ({ color, size }) => (
+            <IonIcons name='document-text-outline' color={color} size={size} />
           ),
           header: () => <Header navigation={navigation} title='About' />,
         }
@@ -48,4 +48,4 @@ function SettingsDrawer() {
   );
 }
 
-export default SettingsDrawer;
+export default DrawerNavigator;

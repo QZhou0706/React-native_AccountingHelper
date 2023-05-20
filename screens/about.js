@@ -2,7 +2,7 @@ import react from 'react';
 import { View, Text, TouchableOpacity,StyleSheet } from 'react-native';
 import Card from '../shared/card';
 
-function HomeScreen({ navigation }) {
+function About({ navigation }) {
   return (
     <View style = {styles.container}>
       <View style = {styles.titleWrapper}>
@@ -54,5 +54,5 @@ const styles = StyleSheet.create({
   }
 })
 
-export default HomeScreen;
+export default About;
 
