@@ -21,6 +21,11 @@ const styles = StyleSheet.create({
         paddingHorizontal:10,
         borderRadius: 8,
         backgroundColor: '#fff',
+        shadowColor: 'black',
+        elevation: 3,
+        shadowRadius: 4,
+        shadowOffset: {width: 0, height: 2},
+        shadowOpacity: 0.2,
     },
     titleWrapper: {
         flexDirection: 'row',
