@@ -1,7 +1,9 @@
 import React, {useState} from "react";
-import { StyleSheet, View, Text, FlatList, TouchableOpacity } from "react-native";
+import { StyleSheet, View, Text, FlatList, TouchableOpacity, ScrollView } from "react-native";
 import { MaterialIcons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 import Card from "../shared/card"
+import { Fontisto } from '@expo/vector-icons';
 
 export default function Home() {
 
@@ -14,18 +16,27 @@ export default function Home() {
         {type: 'food', behavior: 'expenditure', amount: '19', key: 6},
         {type: 'food', behavior: 'income', amount: '19', key: 7},
         {type: 'food', behavior: 'income', amount: '19',key: 8},
+        {type: 'food', behavior: 'income', amount: '19', key: 9},
+        {type: 'food', behavior: 'expenditure', amount: '19', key: 10},
+        {type: 'food', behavior: 'income', amount: '19', key: 11},
+        {type: 'food', behavior: 'income', amount: '19',key: 12},
     ]);
 
     function Accounts({item}) {
         return (
             <View style = {styles.itemContainer}>
-                <View style = {styles.info}>
-                    <Text style = {styles.text}>{item.type}</Text>
-                    <Text style = {styles.text}>{item.behavior}</Text>
-                    <Text style = {styles.text}>{item.amount}</Text>
+                <View justifyContent = 'center'>
+                    <Ionicons name="fast-food-outline" size={30} color="#F5A80F" />
                 </View>
-                <View style = {styles.icon}>
-                    <MaterialIcons name = 'delete' size = {30} color = {'#333'} />
+                <View style = {styles.info}>
+                    <Text style = {[styles.text, {fontWeight: 700}, {color: 'black'}, {fontSize: 20}]}>{item.type}</Text>
+                    <View style = {styles.details}>
+                        <Text style = {styles.text}>{item.behavior}</Text>
+                        <Text style = {styles.text}>{item.amount}</Text>
+                    </View>
+                </View>
+                <View justifyContent = 'center'>
+                <Fontisto name="more-v-a" size={20} color="gray" />
                 </View>
             </View>
         );
@@ -45,6 +56,7 @@ export default function Home() {
                         </Card>
                     </TouchableOpacity>
                 )}
+                showsVerticalScrollIndicator = {false}
                 />
             </View>
             {/* {Tab} */}
@@ -55,20 +67,22 @@ export default function Home() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: 'rgb(240, 240, 240)',
+        paddingHorizontal: 10,
     },
     content: {
         flex: 1,
-        backgroundColor: 'rgb(240, 240, 240)'
+        marginTop: 20,
+        borderTopLeftRadius: 8,
+        borderTopRightRadius: 8,
+        backgroundColor: '#fff',
     },
     Wrapper: {
         flex: 1,
-        paddingHorizontal: 15,
         backgroundColor: 'rgb(240, 240, 240)'
     },
     text: {
-        fontSize: 20,
-        fontWeight: 900,
+        fontSize: 16,
         marginLeft: 10,
         marginBottom: 5,
         color: 'rgb(80, 80, 80)',
@@ -77,7 +91,17 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
         justifyContent: 'space-between',
-        alignItems: 'center',
-        height: 100,
+        height: 80,
+        paddingHorizontal: 5,
+    },
+    info: {
+        flex: 1,
+        justifyContent: 'center',
+        alignContent: 'flex-start',
+        marginLeft: 12,
+        roundColor: 'pink',
+    },
+    details: {
+        flexDirection: 'row',
     }
 })

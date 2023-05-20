@@ -11,15 +11,10 @@ export default function Card(props) {
 
 const styles = StyleSheet.create({
     item: {
-        padding: 6,
         opacity: 0.9,
-        borderTopStartRadius: 10,
-        borderTopEndRadius: 10,
-        borderBottomWidth: 2,
-        borderStyle: 'dashed',
-        borderColor: '#F5A80F',
         backgroundColor: '#fff',
-        marginBottom: 12,
+        paddingLeft: 8,
+        paddingRight: 15,
     },
     text: {
         fontSize: 20,
