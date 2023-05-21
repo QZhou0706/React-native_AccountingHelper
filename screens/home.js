@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: 'rgb(240, 240, 240)',
-        paddingHorizontal: 10,
+        paddingHorizontal: 18,
     },
     iconContainer: {
         justifyContent : 'center',
