@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: 'rgb(240, 240, 240)',
-        paddingHorizontal: 10,
+        paddingHorizontal: 18,
     },
     iconContainer: {
         justifyContent : 'center',
@@ -151,25 +151,29 @@ const styles = StyleSheet.create({
     },
     colorfulText: {
         color: '#F76666',
-        fontWeight: 700,
+        // fontWeight: 700,
+        fontFamily: 'nunito-bold',
         fontSize: 28,
     },
     //带边距的text,用于列表项和卡片标题
     text: {
         fontSize: 16,
+        fontFamily: 'nunito-regular',
         textAlignVertical: 'center',
         marginLeft: 10,
         marginBottom: 2,
         color: '#F76666',
     },
     title: {
-        fontWeight: 700,
+        // fontWeight: 700,
+        fontFamily: 'nunito-bold',
         color: '#333',
         fontSize: 20,
         textAlignVertical: 'center',
     },
     //用于进度条两侧文字
     barText: {
+        fontFamily: 'nunito-regular',
         fontSize: 13,
         textAlignVertical: 'center',
         color: 'rgb(80, 80, 80)',
