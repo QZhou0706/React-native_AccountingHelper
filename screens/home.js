@@ -102,7 +102,6 @@ export default function Home() {
                     ))
                 }
             </ModuleCard>
-            {/* {Tab} */}
         </ScrollView>
     );
 }
