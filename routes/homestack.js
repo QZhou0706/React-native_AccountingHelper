@@ -1,8 +1,8 @@
 import 'react-native-gesture-handler';
 import { createStackNavigator } from '@react-navigation/stack';
 import Header from '../shared/header';
-import Home from '../screens/home';
-import ReviewDetails from '../screens/reviewDetails';
+import DrawerNavigator from './drawer';
+import Details from '../screens/details';
 
 const Stack = createStackNavigator();
 
@@ -11,8 +11,10 @@ function HomeStack() {
     <Stack.Navigator screenOptions={{
       headerShown: false,
     }}>
-      <Stack.Screen name="Home" component={Home} />
-      <Stack.Screen name="ReviewDetails" component={ReviewDetails} />
+      <Stack.Screen name="DrawerNavigator" component={DrawerNavigator} />
+      <Stack.Screen name="Details" component={Details} options={{
+        headerShown: true,
+      }}/>
     </Stack.Navigator>
   );
 };

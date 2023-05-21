@@ -6,7 +6,7 @@ import { useEffect, useRef } from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import AntIcon from "react-native-vector-icons/AntDesign";
 
-import DrawerNavigator from '../routes/drawer';
+import Home from '../screens/home';
 import AboutStack from './aboutStack';
 import AddItem from '../screens/addItem';
 import { Transition } from 'react-native-reanimated';
@@ -14,7 +14,7 @@ import { Transition } from 'react-native-reanimated';
 
 
 const TabList = [
-  { route: 'Home', label: 'Home', iconType: Ionicons, activeIcon: 'home', inActiveIcon: 'home-outline', component: DrawerNavigator },
+  { route: 'Home', label: 'Home', iconType: Ionicons, activeIcon: 'home', inActiveIcon: 'home-outline', component: Home },
   { route: 'AddItem', label: 'AddItem', iconType: AntIcon, activeIcon: 'plussquare', inActiveIcon: 'plussquareo', component: AddItem },
   { route: 'AboutStack', label: 'About', iconType: Ionicons, activeIcon: 'document-text', inActiveIcon: 'document-text-outline', component: AboutStack },
 ]

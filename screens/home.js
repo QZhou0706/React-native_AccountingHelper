@@ -16,7 +16,7 @@ function judgeToday(currentDate, date) {
     return false;
 }
 
-export default function Home() {
+export default function Home({navigation}) {
 
     // get current time
     const currentTime = new Date();
@@ -39,6 +39,10 @@ export default function Home() {
     //filter the data of today
     const todayData = data.filter(item => judgeToday(currentTime, item.time));
 
+    const reviewDetails = (item) => {
+        navigation.navigate('Details', {item});
+    }
+
     return (
         <ScrollView style = {styles.container} showsVerticalScrollIndicator = {false}>
 
@@ -48,7 +52,7 @@ export default function Home() {
 
             <ModuleCard title = {'RECORD'}>
                 {todayData.map((item, index) => (
-                    <TouchableOpacity key = {index}>
+                    <TouchableOpacity key = {index} onPress={() => reviewDetails({item})}>
                         <Card>
                             <Accounts item = {item} />
                         </Card>

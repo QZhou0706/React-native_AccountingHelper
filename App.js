@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
 
 import TabNavigator from './routes/tab';
-import Details from './screens/details';
+import HomeStack from './routes/homestack';
 
 export default function App() {
 
@@ -25,7 +25,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <TabNavigator />
+      <HomeStack />
     </NavigationContainer>
   );
 

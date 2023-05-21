@@ -1,11 +1,10 @@
-import { View, Text } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import CustomDrawer from './src/customDrawer';
 import IonIcons from 'react-native-vector-icons/Ionicons';
 import Header from '../shared/header';
 
-import HomeStack from './homestack';
-import AboutStack from './aboutStack';
+import About from '../screens/about';
+import TabNavigator from './tab';
 
 const Drawer = createDrawerNavigator();
 
@@ -28,7 +27,7 @@ function DrawerNavigator() {
       }}
       drawerContent={props => <CustomDrawer {...props} />}
     >
-      <Drawer.Screen name='HomeStack' component={HomeStack} options={({ navigation }) => {
+      <Drawer.Screen name='TabNavigator' component={TabNavigator} options={({ navigation }) => {
         return {
           drawerIcon: ({ color, size }) => (
             <IonIcons name='home-outline' color={color} size={size} />
@@ -36,7 +35,7 @@ function DrawerNavigator() {
           header: () => <Header navigation={navigation} title='Home' />,
         }
       }} />
-      <Drawer.Screen name="AboutStack" component={AboutStack} options={({ navigation }) => {
+      <Drawer.Screen name="About" component={About} options={({ navigation }) => {
         return {
           drawerIcon: ({ color, size }) => (
             <IonIcons name='document-text-outline' color={color} size={size} />

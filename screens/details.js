@@ -3,23 +3,22 @@ import { View, Text, StyleSheet, TouchableOpacity, Modal } from 'react-native';
 import BillCard from './src/billCard';
 import TipModal from './src/tipModal';
 
-export default function Details() {
+export default function Details({ navigation, item }) {
   const [showModal, setShowModal] = useState(false);
 
   return (
     <View style={styles.container}>
-        <BillCard />
-        <TouchableOpacity style={styles.deleteButton} onPress={() => setShowModal(true)}>
-            <Text style={styles.text}>DELETE</Text>
-        </TouchableOpacity>
-        <TipModal showModal = {showModal} setShowModal = {setShowModal}/>
+      <BillCard item={item} />
+      <TouchableOpacity style={styles.deleteButton} onPress={() => setShowModal(true)}>
+        <Text style={styles.text}>DELETE</Text>
+      </TouchableOpacity>
+      <TipModal showModal={showModal} setShowModal={setShowModal} />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 100,
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
@@ -38,4 +37,4 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 16,
   },
-    });
+});
