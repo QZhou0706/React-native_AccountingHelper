@@ -8,15 +8,16 @@ import {
     ContributionGraph,
     StackedBarChart
   } from "react-native-chart-kit";
-import Svg, { Rect, SvgAst } from 'react-native-svg';
+// import Svg, { Rect, SvgAst } from 'react-native-svg';
 import SheetCard from "../shared/sheetCard";
+import Rect from "../shared/rect";
 const chartConfig = {
     backgroundGradientFrom: "#1E2923",
     backgroundGradientFromOpacity: 0,
     backgroundGradientTo: "#1E2923",
     backgroundGradientToOpacity: 0.0,
-    color: (opacity = 1) => `rgba(226, 155, 146, ${opacity})`,
-    strokeWidth: 15, // optional, default 3
+    color: (opacity = 1) => `rgba(253, 203, 24, ${opacity})`,
+    strokeWidth: 5, // optional, default 3
     barPercentage: 0.5,
     useShadowColorFromDataset: false // optional
 };
@@ -62,18 +63,19 @@ const renderItem = ({item}) => {
   return (
       <View style = {styles.item}>
           <Text style={styles.type}>{type}</Text>
-          <Svg height={20} width={260}>
+          <Rect current={value} total = {1} />
+          {/* <Svg height={20} width={260}>
               <Rect 
                   x="0" 
                   y="5" 
                   width={barWidth} 
                   height="5" 
                   strokeWidth="2" 
-                  fill="pink"   
+                  fill="#FDCB18"   
                   rx="2" 
                   ry="2" 
               />
-          </Svg>
+          </Svg> */}
           <Text style={styles.value}>{value.toFixed(2)}</Text>
       </View>
   )
