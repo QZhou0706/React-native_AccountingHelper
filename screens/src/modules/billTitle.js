@@ -2,15 +2,15 @@ import react from "react";
 import { Ionicons } from '@expo/vector-icons';
 import { View, Text, StyleSheet } from "react-native";
 
-export default function BillTitle() {
+export default function BillTitle({item}) {
     return (
         <View style = {styles.title}>
             <View style = {styles.iconContainer}>
                 <Ionicons name="fast-food-outline" size={24} color="#F5A80F" />
             </View>
             <View style = {styles.type}>
-                <Text style = {styles.text}>FOOD</Text>
-                <Text style = {styles.text}>- ￥ 1110.00</Text>
+                <Text style = {styles.text}>{item.type}</Text>
+                <Text style = {styles.text}>{item.behavior==='income'? '+':'-'}￥ {item.amount}</Text>
             </View>
         </View>
     );

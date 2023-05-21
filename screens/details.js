@@ -3,8 +3,9 @@ import { View, Text, StyleSheet, TouchableOpacity, Modal } from 'react-native';
 import BillCard from './src/billCard';
 import TipModal from './src/tipModal';
 
-export default function Details({ navigation, item }) {
+export default function Details({ navigation, route }) {
   const [showModal, setShowModal] = useState(false);
+  const item = route.params.item;
 
   return (
     <View style={styles.container}>

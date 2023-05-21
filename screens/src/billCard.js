@@ -20,13 +20,13 @@ function BottomCircles({ billWidth }) {
     return circles;
   }
   
-export default function BillCard() {
+export default function BillCard({item}) {
     const screenWidth = Dimensions.get('window').width;
     const billWidth = screenWidth * 0.9;
 
     return (
         <View style={styles.billWrapped}>
-            <BillTitle />
+            <BillTitle item={item} />
             <View style = {styles.divdingLine}>
                 <BigCircle leftDistants = {-9} deg = {'90deg'}/>
                     <DottedLine billWidth={billWidth}/>
