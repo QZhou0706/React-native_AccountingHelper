@@ -23,7 +23,6 @@ function About({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     alignContent: 'center',
     paddingHorizontal: 15,
   },

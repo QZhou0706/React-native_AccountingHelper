@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
         marginTop: 16,
         paddingVertical: 8,
         paddingHorizontal:10,
-        borderRadius: 8,
+        borderRadius: 16,
         backgroundColor: '#fff',
         shadowColor: 'black',
         elevation: 3,

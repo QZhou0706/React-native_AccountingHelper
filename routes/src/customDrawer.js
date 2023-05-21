@@ -17,9 +17,6 @@ const CustomDrawer = (props) => {
         </View>
         <DrawerItemList {...props}/>
       </DrawerContentScrollView>
-      <View>
-        <Text>Our Custom Text</Text>
-      </View>
     </View>
 
   )
