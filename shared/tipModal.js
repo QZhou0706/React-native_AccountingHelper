@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Modal } from 'react-native';
-import BillCard from '../shared/billCard';
 
 export default function TipModal({ showModal, setShowModal }) {
   function handleDelete() {

@@ -1,9 +1,6 @@
-import react from "react";
 import { View, StyleSheet,Text } from "react-native";
 import { Dimensions } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
 import Circle from "./src/circle";
-import Card from "./card";
 import BigCircle from "./src/BigCircle";
 import DottedLine from "./src/dottedLine";
 
