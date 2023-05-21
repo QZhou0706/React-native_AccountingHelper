@@ -1,7 +1,7 @@
 import react from "react";
 import { Ionicons } from '@expo/vector-icons';
 import { View, Text, StyleSheet } from "react-native";
-import Card from "../card";
+import Card from "../../../shared/card";
 
 export default function BillContent() {
     return (

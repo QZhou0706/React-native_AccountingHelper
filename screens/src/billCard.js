@@ -1,11 +1,11 @@
 import { View, StyleSheet,Text } from "react-native";
 import { Dimensions } from 'react-native';
-import Circle from "./src/circle";
-import BigCircle from "./src/BigCircle";
-import DottedLine from "./src/dottedLine";
+import Circle from "./modules/circle";
+import BigCircle from "./modules/BigCircle";
+import DottedLine from "./modules/dottedLine";
 
-import BillTitle from "./src/billTitle";
-import BillContent from "./src/billContent";
+import BillTitle from "./modules/billTitle";
+import BillContent from "./modules/billContent";
 
 function BottomCircles({ billWidth }) {
     const circles = [];

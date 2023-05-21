@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Modal } from 'react-native';
-import BillCard from '../shared/billCard';
-import TipModal from '../shared/tipModal';
+import BillCard from './src/billCard';
+import TipModal from './src/tipModal';
 
 export default function Details() {
   const [showModal, setShowModal] = useState(false);

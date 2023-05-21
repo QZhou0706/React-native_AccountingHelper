@@ -1,5 +1,5 @@
 import { View, StyleSheet, Text } from "react-native";
-import Bar from "../../shared/bar";
+import Bar from "./modules/bar";
 
 export default function OverviewContent() {
     return (

@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
 
 import TabNavigator from './routes/tab';
+import Details from './screens/details';
 
 export default function App() {
 
