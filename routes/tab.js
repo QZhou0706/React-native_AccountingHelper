@@ -39,10 +39,11 @@ const TabNavigator = () => {
         return (
           <Tab.Screen name={item.route} component={item.component} options={{
             tabBarLabel: item.label,
-            tabBarIcon: ({focused, color, size}) => {
-              <Ionicons name={item.activeIcon} color={color} size={size} />
-            }
-          }} />
+            tabBarIcon: ({focused, color, size}) => (
+              <item.iconType name={focused? item.activeIcon: item.inActiveIcon} color={color} size={size} />
+            )
+          }}
+          key={index} />
         )
       })}
       
