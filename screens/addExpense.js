@@ -19,7 +19,7 @@ function getCurrentDate() {
 
 }
 
-export default function AddExpenses() {
+export default function AddExpense() {
 
   const [keyboardShown, setKeyboardShown] = React.useState(false);
   React.useEffect(() => {
@@ -99,7 +99,7 @@ export default function AddExpenses() {
         </View>
 
         {/* confirm buttom */}
-        <TouchableOpacity style={[styles.confirmButtom, { backgroundColor: mainColor, bottom: keyboardShown ? -100 : 110 }]} onPress={() => createItem()}>
+        <TouchableOpacity style={[styles.confirmButtom, { backgroundColor: mainColor, bottom: keyboardShown ? -100 : 150 }]} onPress={() => createItem()}>
           <Text style={styles.buttomText}>confirm</Text>
         </TouchableOpacity>
         <TypeModal modalColor={OtherColor} showModal={showModal} setShowModal={setShowModal} setTypeText={setTypeText} modalHeight={modalHeight} />
@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    paddingTop: 60,
+    paddingTop: 25,
     paddingHorizontal: 14,
     backgroundColor: '#fff',
   },
@@ -159,7 +159,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',
-    marginTop: 176,
+    position: 'absolute',
     borderRadius: 16,
     elevation: 3,
     shadowRadius: 4,

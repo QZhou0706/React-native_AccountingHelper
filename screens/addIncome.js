@@ -1,4 +1,4 @@
-import react, {useState} from "react";
+import React, {useState} from "react";
 import { View, StyleSheet, Text, TextInput, TouchableOpacity, TouchableWithoutFeedback, Keyboard, Dimensions } from "react-native";
 
 import Card from "../shared/card";
@@ -18,7 +18,22 @@ function getCurrentDate() {
 
 }
 
-export default function AddExpenses() {
+export default function AddIncome() {
+
+  const [keyboardShown, setKeyboardShown] = React.useState(false);
+  React.useEffect(() => {
+    const showSubscription = Keyboard.addListener('keyboardDidShow', () => {
+      setKeyboardShown(true);
+    });
+    const hideSubscription = Keyboard.addListener('keyboardDidHide', () => {
+      setKeyboardShown(false);
+    });
+
+    return () => {
+      showSubscription.remove();
+      hideSubscription.remove();
+    };
+  }, []);
 
   const modalWidth = Dimensions.get('window').width * 0.96;
   const iconWidth = (modalWidth - 48 - 54 ) / 4;
@@ -51,7 +66,7 @@ export default function AddExpenses() {
       <View style = {styles.container}>
         <View style = {[styles.amountContainer, {borderColor: mainColor}]}>
           <View style = {styles.title}>
-            <Text style = {[styles.titleText, {color: mainColor}]}>EXPENSES</Text>
+            <Text style = {[styles.titleText, {color: mainColor}]}>INCOMES</Text>
           </View>
         <TextInput
           keyboardType='numeric'
@@ -83,7 +98,7 @@ export default function AddExpenses() {
         </View>
 
         {/* confirm buttom */}
-        <TouchableOpacity style={[styles.confirmButtom, { backgroundColor: mainColor }]} onPress={() => createItem()}>
+        <TouchableOpacity style={[styles.confirmButtom, { backgroundColor: mainColor,  bottom: keyboardShown ? -100 : 150 }]} onPress={() => createItem()}>
           <Text style={styles.buttomText}>confirm</Text>
         </TouchableOpacity>
         <TypeModal modalColor = {OtherColor} showModal={showModal} setShowModal = {setShowModal} setTypeText = {setTypeText} modalHeight = {modalHeight}/>
@@ -102,7 +117,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    paddingTop: 60,
+    paddingTop: 25,
     paddingHorizontal: 14,
     backgroundColor: '#fff',
   },
@@ -143,7 +158,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',
-    marginTop: 176,
+    position: 'absolute',
     borderRadius: 16,
     elevation: 3,
     shadowRadius: 4,

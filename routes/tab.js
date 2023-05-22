@@ -9,14 +9,14 @@ import AntIcon from "react-native-vector-icons/AntDesign";
 
 import Home from '../screens/home';
 import AboutStack from './aboutStack';
-import AddExpenses from '../screens/addExpenses';
+import TopTabNavigator from './topTab';
 import { Transition } from 'react-native-reanimated';
 
 
 
 const TabList = [
   { route: 'Home', label: 'Home', iconType: Ionicons, activeIcon: 'home', inActiveIcon: 'home-outline', component: Home },
-  { route: 'AddItem', label: 'AddItem', iconType: AntIcon, activeIcon: 'plussquare', inActiveIcon: 'plussquareo', component: AddExpenses },
+  { route: 'AddItem', label: 'AddItem', iconType: AntIcon, activeIcon: 'plussquare', inActiveIcon: 'plussquareo', component: TopTabNavigator },
   { route: 'AboutStack', label: 'About', iconType: Ionicons, activeIcon: 'document-text', inActiveIcon: 'document-text-outline', component: AboutStack },
 ]
 
@@ -107,6 +107,9 @@ const TabNavigator = () => {
             right: 16,
             alignItems: 'center',
             justifyContent: 'center',
+            shadowColor: '#ccc',
+            shadowOffset: {width: 0, height: 1},
+            shadowOpacity: 0.3,
           },
         }
       }}>
