@@ -11,6 +11,7 @@ import {
 // import Svg, { Rect, SvgAst } from 'react-native-svg';
 import SheetCard from "../shared/sheetCard";
 import Rect from "../shared/rect";
+import {data as g_data} from '../global/itemData';
 const chartConfig = {
     backgroundGradientFrom: "#1E2923",
     backgroundGradientFromOpacity: 0,
@@ -23,23 +24,24 @@ const chartConfig = {
 };
 
 const screenWidth = Dimensions.get("window").width;
+const data = g_data;
 
-const data = [
-    {type: 'food', behavior: 'income', amount: '19', key: 1, date: "2022-01-02"},
-    {type: 'other', behavior: 'income', amount: '19', key: 1, date: "2022-01-02"},
-    {type: 'game', behavior: 'expenditure', amount: '29', key: 2, date: "2022-01-03"},
-    {type: 'game', behavior: 'expenditure', amount: '39', key: 2, date: "2022-01-04"},
-    {type: 'game', behavior: 'income', amount: '11', key: 3, date: "2022-01-05"},
-    {type: 'food', behavior: 'income', amount: '77',key: 4, date: "2022-01-06"},
-    {type: 'food', behavior: 'income', amount: '159', key: 5, date: "2022-01-07"},
-    {type: 'food', behavior: 'expenditure', amount: '59', key: 6, date: "2022-01-08"},
-    {type: 'other', behavior: 'income', amount: '39', key: 7, date: "2022-01-09"},
-    {type: 'food', behavior: 'income', amount: '19',key: 8, date: "2022-01-10"},
-    {type: 'Buy', behavior: 'income', amount: '19',key: 8, date: "2022-01-10"},
-    {type: 'Buy', behavior: 'income', amount: '19',key: 8, date: "2022-01-10"},
-    {type: 'Play', behavior: 'income', amount: '19',key: 8, date: "2022-01-10"},
-    {type: 'Play', behavior: 'income', amount: '19',key: 8, date: "2022-01-10"},
-]
+// const data = [
+//     {type: 'food', behavior: 'income', amount: '19', key: 1, time: "2022-01-02"},
+//     {type: 'other', behavior: 'income', amount: '19', key: 1, time: "2022-01-02"},
+//     {type: 'game', behavior: 'expenditure', amount: '29', key: 2, time: "2022-01-03"},
+//     {type: 'game', behavior: 'expenditure', amount: '39', key: 2, time: "2022-01-04"},
+//     {type: 'game', behavior: 'income', amount: '11', key: 3, time: "2022-01-05"},
+//     {type: 'food', behavior: 'income', amount: '77',key: 4, time: "2022-01-06"},
+//     {type: 'food', behavior: 'income', amount: '159', key: 5, time: "2022-01-07"},
+//     {type: 'food', behavior: 'expenditure', amount: '59', key: 6, time: "2022-01-08"},
+//     {type: 'other', behavior: 'income', amount: '39', key: 7, time: "2022-01-09"},
+//     {type: 'food', behavior: 'income', amount: '19',key: 8, time: "2022-01-10"},
+//     {type: 'Buy', behavior: 'income', amount: '19',key: 8, time: "2022-01-10"},
+//     {type: 'Buy', behavior: 'income', amount: '19',key: 8, time: "2022-01-10"},
+//     {type: 'Play', behavior: 'income', amount: '19',key: 8, time: "2022-01-10"},
+//     {type: 'Play', behavior: 'income', amount: '19',key: 8, time: "2022-01-10"},
+// ]
 
 const getIncomeData = (data) => {
   return data.filter(item => item.behavior === 'income');
@@ -81,22 +83,22 @@ const renderItem = ({item}) => {
   )
 }
 const mergeddata = Object.values(data.reduce((acc, cur) => {
-  const key = cur.date;
+  const key = cur.time;
   if (!acc[key]) {
-    acc[key] = { date: cur.date, amount: 0 };
+    acc[key] = { time: cur.time, amount: 0 };
   }
   if (cur.behavior === 'income') {
     acc[key].amount += parseFloat(cur.amount);
   }
   return acc;
-}, {})).map(({ date, amount }) => ({ date, amount }));
+}, {})).map(({ time, amount }) => ({ time, amount }));
 
 
 export default function IncomeSheet() {
     const totalIncome = getTotalIncome(data);
     const totalIncomeNum = getTotalIncomeNum(data);
     const income_change_data = {
-      labels : mergeddata.map(item => item.date.slice(-2)),
+      labels : mergeddata.map(item => item.time.slice(-2)),
       datasets: [
           {
               data: mergeddata.map(item => {
@@ -133,7 +135,7 @@ export default function IncomeSheet() {
     };
     return (
         <ScrollView style = {styles.container}>
-            <Text style = {{fontWeight: '800',fontSize: 16,marginLeft: 6,marginTop:10}}>{data[0].date} to {data[6].date}</Text>
+            <Text style = {{fontWeight: '800',fontSize: 16,marginLeft: 6,marginTop:10}}>{data[0].time} to {data[Math.min(6, data.length - 1)].time}</Text>
             <SheetCard>
                 <Text style = {{fontWeight: '800',fontSize: 16}}>Overview of expenditure trends</Text>
                 <View style={styles.separator} />

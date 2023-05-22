@@ -18,7 +18,6 @@ export default function Home({ navigation }) {
     const unsubscribe = navigation.addListener('focus', () => {
       setDatas(data);
     });
-
     // Remove the listener when the component unmounts
     return unsubscribe;
   }, [navigation, data]);

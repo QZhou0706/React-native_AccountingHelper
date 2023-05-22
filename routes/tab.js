@@ -10,14 +10,13 @@ import AntIcon from "react-native-vector-icons/AntDesign";
 import Home from '../screens/home';
 import AboutStack from './aboutStack';
 import TopTabNavigator from './topTab';
-import { Transition } from 'react-native-reanimated';
-
-
+import SheetTab from './sheetTab';
 
 const TabList = [
   { route: 'Home', label: 'Home', iconType: Ionicons, activeIcon: 'home', inActiveIcon: 'home-outline', component: Home },
   { route: 'AddItem', label: 'AddItem', iconType: AntIcon, activeIcon: 'plussquare', inActiveIcon: 'plussquareo', component: TopTabNavigator },
   { route: 'AboutStack', label: 'About', iconType: Ionicons, activeIcon: 'document-text', inActiveIcon: 'document-text-outline', component: AboutStack },
+  { route: 'Sheet', label: 'Sheet', iconType: Ionicons, activeIcon: 'bar-chart', inActiveIcon: 'bar-chart-outline', component: SheetTab }
 ]
 
 const Tab = createBottomTabNavigator();
