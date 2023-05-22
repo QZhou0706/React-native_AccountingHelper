@@ -58,7 +58,6 @@ const styles = StyleSheet.create({
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'space-between',
-      paddingHorizontal: 8,
     },
     readOnlyTextInput: {
         width: 200,

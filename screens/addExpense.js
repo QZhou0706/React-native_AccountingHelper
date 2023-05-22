@@ -5,7 +5,6 @@ import { View, StyleSheet, Text, TextInput, TouchableOpacity, TouchableWithoutFe
 import Card from "../shared/card";
 import { ReadOnlyItem, Item } from "./src/item";
 import TypeModal from "./src/typeModal";
-import MyDatePicker from "./src/datePicker";
 
 import { Foundation } from '@expo/vector-icons';
 import { addItemHandler } from "../global/itemData";
@@ -88,10 +87,14 @@ export default function AddExpense() {
           </Card>
 
           <Card>
-            <View style={styles.itemContainer}>
+              <View style = {styles.itemContainer}>
               <Foundation name='clock' size={24} color="#787878" width={20} />
-              <Text style={styles.text}>TIME</Text>
-              <MyDatePicker setTime={setTime} color={mainColor} />
+              <Text style = {styles.text}>TIME</Text>
+              <TextInput
+              style={styles.textinput}
+              value = {time}
+              readOnly = {true}
+              />
             </View>
           </Card>
 
@@ -118,6 +121,15 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: 'rgb(120, 120, 120)',
     width: 40,
+  },
+  textinput: {
+    fontFamily: 'nunito-bold',
+    width: 200,
+    height: 40,
+    marginLeft: 2,
+    paddingBottom: 2,
+    color: '#333',
+    fontSize: 16,
   },
   container: {
     flex: 1,
