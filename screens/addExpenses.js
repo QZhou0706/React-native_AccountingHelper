@@ -1,9 +1,12 @@
 import react, {useState} from "react";
-
 import { View, StyleSheet, Text, TextInput, TouchableOpacity, TouchableWithoutFeedback, Keyboard } from "react-native";
+
 import Card from "../shared/card";
 import { ReadOnlyItem, Item } from "./src/item";
 import TypeModal from "./src/typeModal";
+import MyDatePicker from "./src/datePicker";
+
+import { Ionicons, Foundation, MaterialCommunityIcons } from '@expo/vector-icons';
 
 export default function AddExpenses() {
 
@@ -54,7 +57,11 @@ export default function AddExpenses() {
           </Card>
 
           <Card>
-            <Item title = {'TIME'} content = {timeText} setContent = {setTimeText} placeholderText = {'e.g. 2023.5.20'}/>
+            <View style = {styles.itemContainer}>
+              <Foundation name='clock' size={24} color="#787878" />
+              <Text style = {styles.text}>TIME</Text>
+              <MyDatePicker />
+            </View>
           </Card>
 
           <Card>
@@ -75,6 +82,11 @@ export default function AddExpenses() {
 }
 
 const styles = StyleSheet.create({
+  text: {
+    fontFamily: 'nunito-regular',
+    fontSize: 14,
+    color: 'rgb(120, 120, 120)',
+  },
   container: {
     flex: 1,
     paddingTop: 60,
@@ -97,6 +109,12 @@ const styles = StyleSheet.create({
   titleText: {
     fontFamily: 'nunito-bold',
     fontSize: 15,
+  },
+  itemContainer: {
+    flexDirection: 'row',
+    height: 60,
+    alignItems: 'center',
+    gap: 8,
   },
   amountInput: {
     height: 80,
