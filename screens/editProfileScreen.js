@@ -3,18 +3,10 @@ import { View, StyleSheet, SafeAreaView, TouchableOpacity, TextInput, ImageBackg
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { useTheme } from "react-native-paper";
+import { profileData, setProfile } from "../global/userInfo";
 
-
-const EditProfileScreen = () => {
-  const [userInfo, setUserInfo] = React.useState({
-    name: '',
-    username: '',
-    location: '',
-    phone: '',
-    email: '',
-    wallet: '',
-    orders: ''
-  });
+const EditProfileScreen = ({ navigation }) => {
+  const [userInfo, setUserInfo] = React.useState(profileData);
   const { colors } = useTheme();
 
   const handleInputChange = (key, value) => {
@@ -25,6 +17,8 @@ const EditProfileScreen = () => {
   };
 
   const handleSubmit = () => {
+    setProfile(userInfo);
+    navigation.navigate('Profile', {userInfo} )
   };
 
   return (
@@ -70,7 +64,7 @@ const EditProfileScreen = () => {
         <View style={Styles.action}>
           <FontAwesome name="user-o" color={colors.text} size={20} />
           <TextInput
-            placeholder="First Name"
+            placeholder="Name"
             placeholderTextColor="#666666"
             style={[Styles.textinput, {
               color: colors.text
@@ -82,13 +76,13 @@ const EditProfileScreen = () => {
         <View style={Styles.action}>
           <FontAwesome name="user-o" color={colors.text} size={20} />
           <TextInput
-            placeholder="Last Name"
+            placeholder="Age"
             placeholderTextColor="#666666"
             style={[Styles.textinput, {
               color: colors.text
             }]}
-            onChangeText={(value) => handleInputChange('username', value)}
-            value={userInfo.username}
+            onChangeText={(value) => handleInputChange('age', value)}
+            value={userInfo.age}
           />
         </View>
         <View style={Styles.action}>
@@ -127,18 +121,6 @@ const EditProfileScreen = () => {
             }]}
             onChangeText={(value) => handleInputChange('location', value)}
             value={userInfo.location}
-          />
-        </View>
-        <View style={Styles.action}>
-          <FontAwesome name="map-marker" color={colors.text} size={20} />
-          <TextInput
-            placeholder="City"
-            placeholderTextColor="#666666"
-            style={[Styles.textinput, {
-              color: colors.text
-            }]}
-            onChangeText={(value) => handleInputChange('city', value)}
-            value={userInfo.city}
           />
         </View>
         <TouchableOpacity style={Styles.commandButton} onPress={handleSubmit}>
@@ -214,11 +196,16 @@ const Styles = StyleSheet.create({
   },
   action: {
     flexDirection: 'row',
-    marginTop: 10,
-    marginBottom: 10,
+    margin: 10,
     borderBottomWidth: 1,
-    borderBottomColor: '#f2f2f2',
+    borderBottomColor: '#ccc',
     paddingBottom: 5,
+    borderWidth: 1,
+    height: 50,
+    alignItems: 'center',
+    borderRadius: 10,
+    borderColor: '#ccc',
+    paddingLeft: 10,
   },
   actionError: {
     flexDirection: 'row',
@@ -228,8 +215,7 @@ const Styles = StyleSheet.create({
     paddingBottom: 5,
   },
   textinput: {
-    position: 'absolute',
-    left: 15,
+    marginLeft: 5,
     flex: 1,
     marginTop: -4,
     paddingLeft: 10,

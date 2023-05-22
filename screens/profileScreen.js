@@ -4,6 +4,7 @@ import { View, StyleSheet, Image, Text, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import WhiteCard from '../shared/whiteCard';
 import ColorCard from "../shared/colorCard";
+import { profileData } from "../global/userInfo";
 
 export default function ProfileScreen({ navigation }) {
     return (
@@ -17,20 +18,20 @@ export default function ProfileScreen({ navigation }) {
                     />
                 </View>
                 <View style={styles.info}>
-                    <Text style={{ fontFamily: 'nunito-bold', fontSize: 25, padding: 10, color: '#333' }}>zGoofy</Text>
-                    <Text style={{ fontFamily: 'nunito-bold', fontSize: 15, color: 'grey' }}>21, Male </Text>
+                    <Text style={{ fontFamily: 'nunito-bold', fontSize: 25, padding: 10, color: '#333' }}>{profileData.name}</Text>
+                    <Text style={{ fontFamily: 'nunito-bold', fontSize: 15, color: 'grey' }}>Age: {profileData.age}</Text>
                 </View>
                 <WhiteCard>
                     <Icon name="map-marker-radius" color="#777777" size={26} />
-                    <Text style={styles.text}>China</Text>
+                    <Text style={styles.text}>{profileData.location}</Text>
                 </WhiteCard>
                 <WhiteCard>
                     <Icon name="phone" color="#777777" size={26} />
-                    <Text style={styles.text}>18081977048</Text>
+                    <Text style={styles.text}>{profileData.phone}</Text>
                 </WhiteCard>
                 <WhiteCard>
                     <Icon name="email" color="#777777" size={26} />
-                    <Text style={styles.text}>zyfy@gmail.com</Text>
+                    <Text style={styles.text}>{profileData.email}</Text>
                 </WhiteCard>
                 <TouchableOpacity 
                 onPress={() => navigation.navigate('EditProfile')}
