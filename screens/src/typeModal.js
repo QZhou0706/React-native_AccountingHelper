@@ -74,6 +74,10 @@ const styles = StyleSheet.create({
         width: '100%',
         backgroundColor: '#fff',
         borderRadius: 16,
+        borderColor: '#333',
+        // borderStyle: 'dashed',
+        borderWidth: 2,
+
     },
     temp: {
         height: 800,
