@@ -1,4 +1,4 @@
-import react, {useState} from "react";
+import React, {useState} from "react";
 
 import { View, StyleSheet, Text, TextInput, TouchableOpacity, TouchableWithoutFeedback, Keyboard } from "react-native";
 import Card from "../shared/card";
@@ -6,6 +6,21 @@ import { ReadOnlyItem, Item } from "./src/item";
 import TypeModal from "./src/typeModal";
 
 export default function AddExpenses() {
+
+  const [keyboardShown, setKeyboardShown] = React.useState(false);
+  React.useEffect(() => {
+    const showSubscription = Keyboard.addListener('keyboardDidShow', () => {
+      setKeyboardShown(true);
+    });
+    const hideSubscription = Keyboard.addListener('keyboardDidHide', () => {
+      setKeyboardShown(false);
+    });
+
+    return () => {
+      showSubscription.remove();
+      hideSubscription.remove();
+    };
+  }, []);
 
   const [typeText, setTypeText] = useState('chooes a type here');
   const [amountText, setAmountText] = useState('');
@@ -64,7 +79,7 @@ export default function AddExpenses() {
         </View>
 
         {/* confirm buttom */}
-        <TouchableOpacity style={[styles.confirmButtom, { backgroundColor: mainColor }]} onPress={() => createItem()}>
+        <TouchableOpacity style={[styles.confirmButtom, { backgroundColor: mainColor, bottom: keyboardShown? -100:110 }]} onPress={() => createItem()}>
           <Text style={styles.buttomText}>confirm</Text>
         </TouchableOpacity>
         <TypeModal modalColor = {OtherColor} showModal={showModal} setShowModal = {setShowModal} setTypeText = {setTypeText}/>
