@@ -4,7 +4,6 @@ import { View, Text, StyleSheet } from "react-native";
 import Card from "../../../shared/card";
 
 export default function BillContent({item}) {
-    console.log()
     return (
         <View style={styles.detailInfo}>
             <Card>
