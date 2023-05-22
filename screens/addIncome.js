@@ -6,7 +6,8 @@ import { ReadOnlyItem, Item } from "./src/item";
 import TypeModal from "./src/typeModal";
 import MyDatePicker from "./src/datePicker";
 
-import { Ionicons, Foundation, MaterialCommunityIcons } from '@expo/vector-icons';
+import { Foundation } from '@expo/vector-icons';
+import { addItemHandler } from "../global/itemData";
 
 function getCurrentDate() {
   const date = new Date();
@@ -14,7 +15,7 @@ function getCurrentDate() {
   const month = parseInt(date.getMonth()) + 1;
   const day = date.getDate();
 
-  return( year + '.' + month + '.' + day );
+  return( year + '-' + month + '-' + day );
 
 }
 
@@ -53,10 +54,12 @@ export default function AddIncome() {
   const OtherColor = '#F76666';
 
   function createItem() {
-    console.log(typeText);
-    console.log(amountText);
-    console.log(time);
-    console.log(remarkText);
+    const item = {type: typeText, behavior: 'income', amount: amountText, time: time, remark: remarkText, uuid: (Math.floor(Math.random() * 1e9).toString()) };
+    addItemHandler(item);
+    setTypeText('fastfood')
+    setAmountText('0.00')
+    setTime(getCurrentDate())
+    setRemarkText('')
   }
 
   return (

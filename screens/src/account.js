@@ -1,14 +1,14 @@
 import { View, Text, StyleSheet } from "react-native";
 
-import { Ionicons } from '@expo/vector-icons';
-import { Fontisto } from '@expo/vector-icons';
+import { Fontisto, MaterialIcons } from '@expo/vector-icons';
 
 export default function Accounts({item}) {
     return (
         <View style = {styles.itemContainer}>
             <View justifyContent = 'center'>
                 <View style = {styles.iconContainer}>
-                    <Ionicons name="fast-food-outline" size={30} color="#F5A80F" />
+                    {/* <Ionicons name="fast-food-outline" size={30} color="#F5A80F" /> */}
+                    <MaterialIcons name={item.type} size={30} color="#F5A80F" />
                 </View>
             </View>
             <View style = {styles.info}>

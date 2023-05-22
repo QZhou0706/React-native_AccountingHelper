@@ -13,7 +13,7 @@ export default function MyDatePicker({setTime, color}) {
     const month = parseInt(currentDate.getMonth()) + 1;
     const day = currentDate.getDate();
 
-    timeString = year + '.' + month + '.' + day;
+    timeString = year + '-' + month + '-' + day;
     setTime(timeString);
   };
 
