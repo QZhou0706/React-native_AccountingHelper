@@ -7,12 +7,9 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 export function Item({title, content, setContent, placeholderText}) {
 
-  var iconName = 'clock';
-  if(title === 'REMARK') iconName = 'clipboard-pencil';
-
     return (
       <View style = {styles.itemContainer}>
-        <Foundation name={iconName} size={24} color="#787878" />
+        <Foundation name='clipboard-pencil' size={24} color="#787878" />
         <Text style = {styles.text}>{title}</Text>
         <TextInput
         style={{ ...styles.textinput, ...styles.placeholder }}
@@ -31,7 +28,6 @@ export function ReadOnlyItem({typeText, setTypeText, setShowModal}) {
     return (
       <TouchableOpacity style = {styles.itemContainer} onPress = {() => setShowModal(true)}>
         <Foundation name="list-bullet" size={24} color="#787878" />
-        {/* <Ionicons name="fast-food-outline" size={24} color="#787878" /> */}
         <Text style = {styles.text}>TYPE</Text>
         <TextInput
         readOnly = {true}

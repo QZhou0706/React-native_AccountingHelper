@@ -3,7 +3,6 @@ import { View, Text, StyleSheet, TouchableOpacity, Modal } from 'react-native';
 
 export default function TipModal({ showModal, setShowModal }) {
   function handleDelete() {
-    console.log('Item deleted');
     setShowModal(false);
   }
 
