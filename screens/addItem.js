@@ -1,6 +1,6 @@
 import react, {useState} from "react";
 
-import { View, StyleSheet, Text, TextInput, TouchableOpacity } from "react-native";
+import { View, StyleSheet, Text, TextInput, TouchableOpacity, TouchableWithoutFeedback, Keyboard } from "react-native";
 import Card from "../shared/card";
 import { ReadOnlyItem, Item } from "./src/item";
 import TypeModal from "./src/typeModal";
@@ -23,13 +23,17 @@ export default function Add() {
     console.log(remarkText);
   }
 
-    return (
+  return (
+    <TouchableWithoutFeedback onPress={() => {
+      Keyboard.dismiss();
+    }}>
       <View style = {styles.container}>
         <View style = {[styles.amountContainer, {borderColor: mainColor}]}>
           <View style = {styles.title}>
             <Text style = {[styles.titleText, {color: mainColor}]}>EXPENSES</Text>
           </View>
         <TextInput
+          keyboardType='numeric'
           style={{ ...styles.amountInput, ...styles.amountPlaceholder, color: mainColor }}
           value = {amountText}
           onChangeText = {val => setAmountText(val)}
@@ -56,9 +60,11 @@ export default function Add() {
         <TouchableOpacity style={[styles.confirmButtom, { backgroundColor: mainColor }]} onPress={() => createItem()}>
           <Text style={styles.buttomText}>confirm</Text>
         </TouchableOpacity>
-        <TypeModal showModal={showModal} setShowModal = {setShowModal}/>
+        <TypeModal showModal={showModal} setShowModal = {setShowModal} setTypeText = {setTypeText}/>
       </View>
-    );
+    </TouchableWithoutFeedback>
+    
+  );
 }
 
 const styles = StyleSheet.create({
@@ -72,7 +78,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 10,
     position: 'relative',
-   Vertical: 22,
+    Vertical: 22,
     marginTop: 8,
   },
   title: {
