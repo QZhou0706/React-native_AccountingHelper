@@ -34,7 +34,7 @@ export default function AddExpenses() {
       <View style = {styles.container}>
         <View style = {[styles.amountContainer, {borderColor: mainColor}]}>
           <View style = {styles.title}>
-            <Text style = {[styles.titleText, {color: mainColor}]}>EXPENSES</Text>
+            <Text style = {[styles.titleText, {color: mainColor}]}>INCOMES</Text>
           </View>
         <TextInput
           keyboardType='numeric'
