@@ -23,9 +23,9 @@ const styles = StyleSheet.create({
     },
     whiteLine: {
         position: 'absolute',
-        bottom: -3,
-        left: -0,
-        height: 3,
+        bottom: -3.5,
+        left: 0,
+        height: 4,
         width: 22,
         backgroundColor: '#fff',
     }

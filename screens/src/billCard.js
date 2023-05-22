@@ -40,7 +40,7 @@ export default function BillCard({ item }) {
 
 const styles = StyleSheet.create({
     billWrapped: {
-        height: '76%',
+        height: '74%',
         width: '90%',
         borderWidth: 2,
         borderColor: '#F5A80F',

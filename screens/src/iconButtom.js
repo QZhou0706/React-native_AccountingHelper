@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
-import { Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { Text, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
 
 import { MaterialIcons } from '@expo/vector-icons';
 
 export default function IconButtom({flag, iconName, iconColor, setTypeText, setShowModal}) {
 
-    let buttomColor = 'rgba(249, 198, 17, 0.2)';
+    const screenWidth = Dimensions.get('window').width;
+    const modalWidth = screenWidth * 0.96;
+    const iconWidth = (modalWidth - 48 - 54 ) / 4;
+
+    let buttomColor = 'rgba(249, 198, 17, 0.15)';
     if(flag === '#F76666') buttomColor = 'rgba(255,63,42, 0.15)';
     
     function onPressHandler() {
@@ -14,7 +18,7 @@ export default function IconButtom({flag, iconName, iconColor, setTypeText, setS
     }
 
     return (
-        <TouchableOpacity style = {[styles.border, {backgroundColor: buttomColor}]} onPress = {() => onPressHandler()}>
+        <TouchableOpacity style = {[styles.border, {backgroundColor: buttomColor}, {width: iconWidth}, {height: iconWidth}]} onPress = {() => onPressHandler()}>
             <MaterialIcons name={iconName} color = {iconColor}  style = {styles.icon}/>
             <Text style = {styles.text}>{iconName}</Text>
         </TouchableOpacity>
@@ -25,8 +29,6 @@ const styles = StyleSheet.create({
     border: {
         fontSize: 32,
         backgroundColor: '#fff',
-        height: 68,
-        width: 68,
         justifyContent: 'center',
         alignItems: 'center',
         paddingTop: 4,
