@@ -13,9 +13,9 @@ export default function ColorCard(props) {
 
 const styles = StyleSheet.create({
   cards: {
-    borderRadius: 6,
+    borderRadius: 10,
     elevation: 3,
-    backgroundColor: '#000',
+    backgroundColor: 'rgb(249, 198, 17)',
     shadowOffset: { width: 1, height: 1 },
     shadowColor: '#333',
     shadowOpacity: 1,
@@ -24,8 +24,6 @@ const styles = StyleSheet.create({
     marginVertical: 6,
     width:'90%',
     alignSelf:'center'
-    // borderWidth: 2, 
-    // borderColor: '#333', 
   },
   cardContext: {
     marginTop: 30,
@@ -35,6 +33,7 @@ const styles = StyleSheet.create({
     justifyContent:'center',
     alignSelf:'center',
     flexDirection:'row',
+    gap: 6,
   },
 
 })
