@@ -16,7 +16,7 @@ const props3 = {
     color1: '#89597B', color2: '#ABD373', color3: '#FBD509', color4: '#5981B1'}
 
 
-export default function TypeModal({ modalColor , showModal, setShowModal, setTypeText }) {
+export default function TypeModal({ modalColor , showModal, setShowModal, setTypeText, modalHeight }) {
 
     function handleClose() {
         setShowModal(false);
@@ -25,10 +25,10 @@ export default function TypeModal({ modalColor , showModal, setShowModal, setTyp
     function CreateIconRow({name1, name2, name3, name4, color1, color2, color3, color4}) {
         return (
             <View style = {styles.row}>
-                <IconButtom flag = {modalColor} iconName={name1} iconColor = {color1} setTypeText = {setTypeText} setShowModal = {setShowModal}/>
-                <IconButtom flag = {modalColor} iconName={name2} iconColor = {color2} setTypeText = {setTypeText} setShowModal = {setShowModal}/>
-                <IconButtom flag = {modalColor} iconName={name3} iconColor = {color3} setTypeText = {setTypeText} setShowModal = {setShowModal}/>
-                <IconButtom flag = {modalColor} iconName={name4} iconColor = {color4} setTypeText = {setTypeText} setShowModal = {setShowModal}/>
+                <IconButtom flag = {modalColor} iconName={name1} iconColor = {color1} setTypeText = {setTypeText} setShowModal = {setShowModal} />
+                <IconButtom flag = {modalColor} iconName={name2} iconColor = {color2} setTypeText = {setTypeText} setShowModal = {setShowModal} />
+                <IconButtom flag = {modalColor} iconName={name3} iconColor = {color3} setTypeText = {setTypeText} setShowModal = {setShowModal} />
+                <IconButtom flag = {modalColor} iconName={name4} iconColor = {color4} setTypeText = {setTypeText} setShowModal = {setShowModal} />
             </View>
         );
     }
@@ -39,7 +39,7 @@ export default function TypeModal({ modalColor , showModal, setShowModal, setTyp
             <TouchableWithoutFeedback onPress={handleClose}>
                 <View style = {styles.dismissArea}></View>
             </TouchableWithoutFeedback>
-            <View style={[styles.modalContent, {backgroundColor: modalColor}]}>
+            <View style={[styles.modalContent, {backgroundColor: modalColor}, {height: modalHeight}]}>
                 <View style = {styles.grayBar}></View>
                 <View style = {styles.typeContainer}>
                     <CreateIconRow {...props1} />
@@ -59,10 +59,8 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(0, 0, 0, 0)',
     },
     dismissArea: {
-        height: '58%',
+        flex: 1,
         width: '100%',
-        position: 'absolute',
-        top: 0,
     },
     modalContent: {
         // backgroundColor: '#F9C611',
@@ -73,12 +71,11 @@ const styles = StyleSheet.create({
         borderTopLeftRadius: 16,
         borderTopRightRadius: 16,
         alignItems: 'center',
-        height: '42%',
         width: '96%',
         position: 'absolute',
         bottom: 0,
         elevation: 3,
-        hadowRadius: 4,
+        shadowRadius: 4,
         shadowOffset: {width: 0, height: 2},
         shadowOpacity: 0.2,
     },
@@ -95,6 +92,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         borderRadius: 16,
         borderColor: '#333',
+        paddingVertical: 8,
     },
     row: {
         flexDirection: 'row',

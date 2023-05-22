@@ -42,6 +42,6 @@ const styles = StyleSheet.create({
     },
     text: {
         fontFamily: 'nunito-bold',
-        fontSize: 20,
+        fontSize: 24,
     },
 })

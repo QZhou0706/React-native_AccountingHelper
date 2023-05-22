@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     bar: {
         backgroundColor: 'rgba(245, 168, 15, 0.3)',
         height: 16,
-        width: 180,
+        width: 175,
         borderRadius: 18,
         marginHorizontal: 12,
     },
