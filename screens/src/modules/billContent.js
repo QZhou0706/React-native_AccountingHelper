@@ -3,25 +3,25 @@ import { Ionicons } from '@expo/vector-icons';
 import { View, Text, StyleSheet } from "react-native";
 import Card from "../../../shared/card";
 
-export default function BillContent() {
+export default function BillContent({item}) {
     return (
-        <View style = {styles.detailInfo}>
+        <View style={styles.detailInfo}>
             <Card>
-                <View style = {styles.itemContainer}>
-                    <Text style = {styles.itemText}>BEHAVIOR</Text>
-                    <Text style = {styles.itemText}>INCOME</Text>
+                <View style={styles.itemContainer}>
+                    <Text style={styles.itemText}>BEHAVIOR</Text>
+                    <Text style={styles.itemText}>{item.behavior}</Text>
                 </View>
             </Card>
             <Card>
-                <View style = {styles.itemContainer}>
-                    <Text style = {styles.itemText}>TIME</Text>
-                    <Text style = {styles.itemText}>2023.5.21</Text>
+                <View style={styles.itemContainer}>
+                    <Text style={styles.itemText}>TIME</Text>
+                    <Text style={styles.itemText}>{item.time}</Text>
                 </View>
             </Card>
             <Card>
-                <View style = {styles.itemContainer}>
-                    <Text style = {styles.itemText}>REMARK</Text>
-                    <Text style = {styles.itemText}>some remark...</Text>
+                <View style={styles.itemContainer}>
+                    <Text style={styles.itemText}>REMARK</Text>
+                    <Text style={styles.itemText}>{item.remark}</Text>
                 </View>
             </Card>
         </View>

@@ -1,34 +1,37 @@
 import React, { useState } from "react";
-import { StyleSheet, View, Text, FlatList, TouchableOpacity, ScrollView } from "react-native";
+import { StyleSheet, TouchableOpacity, ScrollView } from "react-native";
 
 import Card from "../shared/card"
 import ModuleCard from "../shared/ModuleCard";
 import Accounts from "./src/account";
 import OverviewContent from "./src/overView";
 
-import {data} from './src/itemData';
-
-//judeg if the data is today' s data
-function judgeToday(currentDate, date) {
-  const year = currentDate.getFullYear();
-  const month = currentDate.getMonth() + 1;
-  const day = currentDate.getDate();
-  const currentTime = year + '.' + month + '.' + day;
-  if (currentTime === date) return true;
-  return false;
-}
-
 export default function Home({ navigation }) {
 
-  // get current time
-  const currentTime = new Date();
+  const [data, setData] = useState([
+    { type: 'Apple', behavior: 'expenditure', amount: '1000', time: '2023-05-22', remark: 'none', uuid: '1234' },
+  ]);
 
-  //filter the data of today
-  const todayData = data.filter(item => judgeToday(currentTime, item.time));
+  //judeg if the data is today' s data
+  function judgeToday(date) {
+    let now = new Date(date);
+
+    const currentTime = new Date();     // get current time
+    if (currentTime.getFullYear() === now.getFullYear() && currentTime.getMonth() == now.getMonth() && currentTime.getDate() == now.getDate()) return true;
+    return false;
+  }
+
+  const deleteHandler = (uuid) => {
+    const newData = data.filter(item => item.uuid !== uuid);
+    setData(newData);
+  }
 
   const reviewDetails = (item) => {
-    navigation.navigate('Details', item);
+    navigation.navigate('Details', {item, deleteHandler});
   }
+
+  // filter the data of today
+  const todayData = data.filter(item => judgeToday(item.time));
 
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
@@ -40,7 +43,7 @@ export default function Home({ navigation }) {
       <ModuleCard title={'RECORD'}>
         {todayData.map((item, index) => (
           <TouchableOpacity
-            onPress={() => reviewDetails({item})}
+            onPress={() => reviewDetails(item)}
             key={index}>
             <Card>
               <Accounts item={item} />
