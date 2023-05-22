@@ -24,8 +24,6 @@ const styles = StyleSheet.create({
     marginVertical: 6,
     width:'90%',
     alignSelf:'center'
-    // borderWidth: 2, 
-    // borderColor: '#333', 
   },
   cardContext: {
     marginTop: 30,
@@ -35,6 +33,7 @@ const styles = StyleSheet.create({
     justifyContent:'center',
     alignSelf:'center',
     flexDirection:'row',
+    gap: 6,
   },
 
 })
