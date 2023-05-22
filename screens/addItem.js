@@ -56,7 +56,7 @@ export default function Add() {
         <TouchableOpacity style={[styles.confirmButtom, { backgroundColor: mainColor }]} onPress={() => createItem()}>
           <Text style={styles.buttomText}>confirm</Text>
         </TouchableOpacity>
-        <TypeModal showModal={showModal}/>
+        <TypeModal showModal={showModal} setShowModal = {setShowModal}/>
       </View>
     );
 }
@@ -64,8 +64,9 @@ export default function Add() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 120,
+    paddingTop: 60,
     paddingHorizontal: 14,
+    backgroundColor: '#fff',
   },
   amountContainer: {
     borderWidth: 2,
@@ -98,8 +99,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',
-    position: 'absolute',
-    bottom: 40,
+    marginTop: 176,
     borderRadius: 16,
     elevation: 3,
     shadowRadius: 4,

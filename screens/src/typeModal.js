@@ -1,20 +1,22 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Modal, TouchableWithoutFeedback } from 'react-native';
-import { set } from 'react-native-reanimated';
+import { View, Text, StyleSheet, Modal, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
 
 export default function TypeModal({ showModal, setShowModal }) {
 
-    function onPressHandler() {
-        if(showModal === true) setShowModal(false);
-    }
+    function handleClose() {
+        setShowModal(false);
+      }
 
   return (
-    <Modal visible={showModal} transparent animationType="fade">
+    <Modal visible={showModal} transparent animationType='slide'>
         <View style={styles.modalContainer}>
+            <TouchableWithoutFeedback onPress={handleClose}>
+                <View style = {styles.dismissArea}></View>
+            </TouchableWithoutFeedback>
                 <View style={styles.modalContent}>
+                    <View style = {styles.grayBar}></View>
                     <Text style={styles.modalText}>CHOOES A TYPE</Text>
                     <View style = {styles.typeContainer}>
-
                     </View>
                 </View>
         </View>
@@ -29,10 +31,19 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: 'rgba(0, 0, 0, 0)',
     },
+    dismissArea: {
+        height: '55%',
+        width: '100%',
+        position: 'absolute',
+        top: 0,
+        // backgroundColor: 'pink',
+    },
     modalContent: {
-        backgroundColor: '#F5A80F',
-        paddingHorizontal: 20,
-        paddingVertical: 30,
+        backgroundColor: '#F9C611',
+        paddingHorizontal: 16,
+        paddingTop: 15,
+        paddingBottom: 26,
+        // paddingVertical: 26,
         borderTopLeftRadius: 16,
         borderTopRightRadius: 16,
         alignItems: 'center',
@@ -42,16 +53,27 @@ const styles = StyleSheet.create({
         position: 'absolute',
         bottom: 0,
     },
+    grayBar: {
+        // backgroundColor: 'rgb(200, 200, 200)',
+        backgroundColor: '#fff',
+        borderRadius: 20,
+        height: 4,
+        width: 80,
+    },
     modalText: {
         fontFamily: 'nunito-bold',
         fontSize: 18,
-        marginBottom: 20,
+        marginBottom: 14,
+        marginTop: 10,
+        // marginVertical: 14,
         color: '#fff',
+        // backgroundColor: 'pink',
     },
     typeContainer: {
         flex: 1,
         width: '100%',
-        backgroundColor: '#fff'
+        backgroundColor: '#fff',
+        borderRadius: 16,
     },
     temp: {
         height: 800,
