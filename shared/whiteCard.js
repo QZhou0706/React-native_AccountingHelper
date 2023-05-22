@@ -21,12 +21,12 @@ const styles = StyleSheet.create({
     shadowOpacity: 1,
     shadowRadius: 2,
     marginHorizontal: 4,
-    marginVertical: 6,
+    marginVertical: 5,
     width:'90%',
     alignSelf:'center'
   },
   cardContext: {
-    marginTop: 30,
+    marginTop: 20,
     marginHorizontal: 16,
     marginVertical: 20,
     marginLeft:5,

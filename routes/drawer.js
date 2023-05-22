@@ -36,20 +36,20 @@ function DrawerNavigator() {
           header: () => <Header navigation={navigation} title='Home' />,
         }
       }} />
-      <Drawer.Screen name="About" component={About} options={({ navigation }) => {
-        return {
-          drawerIcon: ({ color, size }) => (
-            <IonIcons name='document-text-outline' color={color} size={size} />
-          ),
-          header: () => <Header navigation={navigation} title='About' />,
-        }
-      }} />
       <Drawer.Screen name="Profile" component={ProfileStack} options={({ navigation }) => {
         return {
           drawerIcon: ({ color, size }) => (
             <IonIcons name='ios-person-circle-outline' color={color} size={size} />
           ),
           header: () => <Header navigation={navigation} title='Profile' />,
+        }
+      }} />
+      <Drawer.Screen name="About" component={About} options={({ navigation }) => {
+        return {
+          drawerIcon: ({ color, size }) => (
+            <IonIcons name='document-text-outline' color={color} size={size} />
+          ),
+          header: () => <Header navigation={navigation} title='About' />,
         }
       }} />
     </Drawer.Navigator>
