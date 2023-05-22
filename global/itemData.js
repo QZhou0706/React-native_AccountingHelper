@@ -1,5 +1,5 @@
 export var data = [
-  { type: 'Apple', behavior: 'expenditure', amount: '1000', time: '2023-05-23', remark: 'none', uuid: '1234' },
+  { type: 'Apple', behavior: 'expenditure', amount: '1000', time: '2023-05-20', remark: 'none', uuid: '1234' },
 ]
 
 export const deleteHandler = (uuid) => {
