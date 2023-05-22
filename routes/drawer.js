@@ -5,6 +5,7 @@ import Header from '../shared/header';
 
 import About from '../screens/about';
 import TabNavigator from './tab';
+import ProfileStack from './profileStack';
 
 const Drawer = createDrawerNavigator();
 
@@ -41,6 +42,14 @@ function DrawerNavigator() {
             <IonIcons name='document-text-outline' color={color} size={size} />
           ),
           header: () => <Header navigation={navigation} title='About' />,
+        }
+      }} />
+      <Drawer.Screen name="Profile" component={ProfileStack} options={({ navigation }) => {
+        return {
+          drawerIcon: ({ color, size }) => (
+            <IonIcons name='ios-person-circle-outline' color={color} size={size} />
+          ),
+          header: () => <Header navigation={navigation} title='Profile' />,
         }
       }} />
     </Drawer.Navigator>
