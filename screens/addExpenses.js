@@ -5,16 +5,20 @@ import Card from "../shared/card";
 import { ReadOnlyItem, Item } from "./src/item";
 import TypeModal from "./src/typeModal";
 
-export default function Add() {
+export default function AddExpenses() {
 
   const [typeText, setTypeText] = useState('chooes a type here');
-  const [amountText, setAmountText] = useState('0.00');
-  const [timeText, setTimeText] = useState('e.g. 2023.5.20');
-  const [remarkText, setRemarkText] = useState('...');
+  const [amountText, setAmountText] = useState('');
+  const [timeText, setTimeText] = useState('');
+  const [remarkText, setRemarkText] = useState('');
 
   const [showModal, setShowModal] = useState(false);
 
   const mainColor = '#F5A80F';
+  // const mainColor = '#F76666';
+
+  const OtherColor = '#F9C611';
+  // const OtherColor = '#F76666';
 
   function createItem() {
     console.log(typeText);
@@ -34,9 +38,12 @@ export default function Add() {
           </View>
         <TextInput
           keyboardType='numeric'
-          style={{ ...styles.amountInput, ...styles.amountPlaceholder, color: mainColor }}
+          style={{ ...styles.amountInput, ...styles.amountPlaceholder, color:mainColor }}
           value = {amountText}
           onChangeText = {val => setAmountText(val)}
+          placeholder = '0.00'
+          placeholderTextColor = {mainColor}
+          cursorColor = '#fff'
         />
         </View>
 
@@ -47,11 +54,11 @@ export default function Add() {
           </Card>
 
           <Card>
-            <Item title = {'TIME'} content = {timeText} setContent = {setTimeText}/>
+            <Item title = {'TIME'} content = {timeText} setContent = {setTimeText} placeholderText = {'e.g. 2023.5.20'}/>
           </Card>
 
           <Card>
-            <Item title = {'REMARK'} content = {remarkText} setContent = {setRemarkText}/>
+            <Item title = {'REMARK'} content = {remarkText} setContent = {setRemarkText} placeholderText = {'...'}/>
           </Card>
 
         </View>
@@ -60,7 +67,7 @@ export default function Add() {
         <TouchableOpacity style={[styles.confirmButtom, { backgroundColor: mainColor }]} onPress={() => createItem()}>
           <Text style={styles.buttomText}>confirm</Text>
         </TouchableOpacity>
-        <TypeModal showModal={showModal} setShowModal = {setShowModal} setTypeText = {setTypeText}/>
+        <TypeModal modalColor = {OtherColor} showModal={showModal} setShowModal = {setShowModal} setTypeText = {setTypeText}/>
       </View>
     </TouchableWithoutFeedback>
     

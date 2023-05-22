@@ -3,7 +3,10 @@ import { Text, StyleSheet, TouchableOpacity } from 'react-native';
 
 import { MaterialIcons } from '@expo/vector-icons';
 
-export default function IconButtom({iconName, iconColor, setTypeText, setShowModal}) {
+export default function IconButtom({flag, iconName, iconColor, setTypeText, setShowModal}) {
+
+    let buttomColor = 'rgba(249, 198, 17, 0.2)';
+    if(flag === '#F76666') buttomColor = 'rgba(255,63,42, 0.15)';
     
     function onPressHandler() {
         setShowModal(false);
@@ -11,7 +14,7 @@ export default function IconButtom({iconName, iconColor, setTypeText, setShowMod
     }
 
     return (
-        <TouchableOpacity style = {styles.border} onPress = {() => onPressHandler()}>
+        <TouchableOpacity style = {[styles.border, {backgroundColor: buttomColor}]} onPress = {() => onPressHandler()}>
             <MaterialIcons name={iconName} color = {iconColor}  style = {styles.icon}/>
             <Text style = {styles.text}>{iconName}</Text>
         </TouchableOpacity>
@@ -30,8 +33,6 @@ const styles = StyleSheet.create({
         // borderWidth: 2,
         borderRadius: 16,
         borderColor: '#F5A80F',
-        // backgroundColor: 'rgba(255,63,42, 0.1)',
-        backgroundColor: 'rgba(249, 198, 17, 0.2)',
     },
     icon: {
         fontSize: 32,

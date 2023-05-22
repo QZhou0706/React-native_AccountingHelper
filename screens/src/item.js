@@ -1,19 +1,26 @@
 import react, {useState} from "react";
 import { View, StyleSheet, Text, TextInput, TouchableOpacity, Modal } from "react-native";
 
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons, Foundation } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 
-export function Item({title, content, setContent}) {
+export function Item({title, content, setContent, placeholderText}) {
+
+  var iconName = 'clock';
+  if(title === 'REMARK') iconName = 'clipboard-pencil';
+
     return (
       <View style = {styles.itemContainer}>
-        <Ionicons name="fast-food-outline" size={24} color="#787878" />
+        <Foundation name={iconName} size={24} color="#787878" />
         <Text style = {styles.text}>{title}</Text>
         <TextInput
         style={{ ...styles.textinput, ...styles.placeholder }}
         value = {content}
         onChangeText = {val => setContent(val)}
+        placeholder = {placeholderText}
+        placeholderTextColor = '#333'
+        cursorColor={'#787878'}
         />
       </View>
     );
@@ -23,7 +30,8 @@ export function ReadOnlyItem({typeText, setTypeText, setShowModal}) {
 
     return (
       <TouchableOpacity style = {styles.itemContainer} onPress = {() => setShowModal(true)}>
-        <Ionicons name="fast-food-outline" size={24} color="#787878" />
+        <Foundation name="list-bullet" size={24} color="#787878" />
+        {/* <Ionicons name="fast-food-outline" size={24} color="#787878" /> */}
         <Text style = {styles.text}>TYPE</Text>
         <TextInput
         readOnly = {true}
