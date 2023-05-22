@@ -1,30 +1,27 @@
 import react, {useState} from "react";
 
-import { Ionicons } from '@expo/vector-icons';
-
 import { View, StyleSheet, Text, TextInput, TouchableOpacity } from "react-native";
 import Card from "../shared/card";
-import { BottomNavigation } from "react-native-paper";
+import { ReadOnlyItem, Item } from "./src/item";
+import TypeModal from "./src/typeModal";
 
 export default function Add() {
 
+  const [typeText, setTypeText] = useState('chooes a type here');
+  const [amountText, setAmountText] = useState('0.00');
+  const [timeText, setTimeText] = useState('e.g. 2023.5.20');
+  const [remarkText, setRemarkText] = useState('...');
+
+  const [showModal, setShowModal] = useState(false);
+
   const mainColor = '#F5A80F';
 
-  function Item({title, content}) {
-    return (
-      <View style = {styles.itemContainer}>
-        <Ionicons name="fast-food-outline" size={24} color="#787878" />
-        <Text style = {styles.text}>{title}</Text>
-        <TextInput
-        style={{ ...styles.textinput, ...styles.placeholder }}
-        placeholder = {content}
-        placeholderTextColor={'#333'}
-        />
-      </View>
-    );
+  function createItem() {
+    console.log(typeText);
+    console.log(amountText);
+    console.log(timeText);
+    console.log(remarkText);
   }
-
-  const [typeText, setTypeText] = useState('');
 
     return (
       <View style = {styles.container}>
@@ -33,34 +30,33 @@ export default function Add() {
             <Text style = {[styles.titleText, {color: mainColor}]}>EXPENSES</Text>
           </View>
         <TextInput
-          placeholder="6.34"
-          style={{ ...styles.typeInput, ...styles.typePlaceholder }}
-          placeholderTextColor = {mainColor}
+          style={{ ...styles.amountInput, ...styles.amountPlaceholder, color: mainColor }}
+          value = {amountText}
+          onChangeText = {val => setAmountText(val)}
         />
         </View>
-        <View style = {styles.infoContainer}>
+
+        {/* items */}
+        <View>
           <Card>
-            <TouchableOpacity style = {styles.itemContainer} onPress = {() => setTypeText('food')}>
-              <Ionicons name="fast-food-outline" size={24} color="#787878" />
-              <Text style = {styles.text}>TYPE</Text>
-              <TextInput
-              readOnly = {true}
-              value = {typeText}
-              style={{ ...styles.textinput, ...styles.placeholder }}
-              placeholderTextColor={'#333'}
-              />
-            </TouchableOpacity>
+            <ReadOnlyItem typeText={typeText} setTypeText = {setTypeText} setShowModal = {setShowModal} />
           </Card>
+
           <Card>
-            <Item title = {'TIME'} content = {'type time here...'}/>
+            <Item title = {'TIME'} content = {timeText} setContent = {setTimeText}/>
           </Card>
+
           <Card>
-            <Item title = {'REMARK'} content = {'...'}/>
+            <Item title = {'REMARK'} content = {remarkText} setContent = {setRemarkText}/>
           </Card>
+
         </View>
-        <TouchableOpacity style = {[styles.confirmButtom, {backgroundColor: mainColor}]}>
-          <Text style = {styles.buttomText}>comfirm</Text>
+
+        {/* confirm buttom */}
+        <TouchableOpacity style={[styles.confirmButtom, { backgroundColor: mainColor }]} onPress={() => createItem()}>
+          <Text style={styles.buttomText}>confirm</Text>
         </TouchableOpacity>
+        <TypeModal showModal={showModal}/>
       </View>
     );
 }
@@ -88,34 +84,13 @@ const styles = StyleSheet.create({
     fontFamily: 'nunito-bold',
     fontSize: 15,
   },
-  typeInput: {
+  amountInput: {
     height: 80,
     paddingHorizontal: 6,
   },
-  typePlaceholder: {
+  amountPlaceholder: {
     fontSize: 50,
     fontFamily: 'nunito-regular',
-  },
-  itemContainer: {
-    flexDirection: 'row',
-    height: 60,
-    alignItems: 'center',
-    gap: 8,
-  },
-  textinput: {
-    width: 200,
-    height: 40,
-    marginLeft: 2,
-    paddingBottom: 2,
-  },
-  placeholder: {
-    fontSize: 18,
-    fontFamily: 'nunito-bold',
-  },
-  text: {
-    fontFamily: 'nunito-regular',
-    fontSize: 14,
-    color: 'rgb(120, 120, 120)',
   },
   confirmButtom: {
     height: 60,
