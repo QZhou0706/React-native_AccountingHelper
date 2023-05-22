@@ -1,20 +1,24 @@
 import react, {useState} from "react";
 
-import { View, StyleSheet, Text, TextInput, TouchableOpacity } from "react-native";
+import { View, StyleSheet, Text, TextInput, TouchableOpacity, TouchableWithoutFeedback, Keyboard } from "react-native";
 import Card from "../shared/card";
 import { ReadOnlyItem, Item } from "./src/item";
 import TypeModal from "./src/typeModal";
 
-export default function Add() {
+export default function AddExpenses() {
 
   const [typeText, setTypeText] = useState('chooes a type here');
-  const [amountText, setAmountText] = useState('0.00');
-  const [timeText, setTimeText] = useState('e.g. 2023.5.20');
-  const [remarkText, setRemarkText] = useState('...');
+  const [amountText, setAmountText] = useState('');
+  const [timeText, setTimeText] = useState('');
+  const [remarkText, setRemarkText] = useState('');
 
   const [showModal, setShowModal] = useState(false);
 
-  const mainColor = '#F5A80F';
+//   const mainColor = '#F5A80F';
+  const mainColor = '#F76666';
+
+//   const OtherColor = '#F9C611';
+  const OtherColor = '#F76666';
 
   function createItem() {
     console.log(typeText);
@@ -23,16 +27,23 @@ export default function Add() {
     console.log(remarkText);
   }
 
-    return (
+  return (
+    <TouchableWithoutFeedback onPress={() => {
+      Keyboard.dismiss();
+    }}>
       <View style = {styles.container}>
         <View style = {[styles.amountContainer, {borderColor: mainColor}]}>
           <View style = {styles.title}>
-            <Text style = {[styles.titleText, {color: mainColor}]}>EXPENSES</Text>
+            <Text style = {[styles.titleText, {color: mainColor}]}>INCOMES</Text>
           </View>
         <TextInput
-          style={{ ...styles.amountInput, ...styles.amountPlaceholder, color: mainColor }}
+          keyboardType='numeric'
+          style={{ ...styles.amountInput, ...styles.amountPlaceholder, color:mainColor }}
           value = {amountText}
           onChangeText = {val => setAmountText(val)}
+          placeholder = '0.00'
+          placeholderTextColor = {mainColor}
+          cursorColor = '#fff'
         />
         </View>
 
@@ -43,11 +54,11 @@ export default function Add() {
           </Card>
 
           <Card>
-            <Item title = {'TIME'} content = {timeText} setContent = {setTimeText}/>
+            <Item title = {'TIME'} content = {timeText} setContent = {setTimeText} placeholderText = {'e.g. 2023.5.20'}/>
           </Card>
 
           <Card>
-            <Item title = {'REMARK'} content = {remarkText} setContent = {setRemarkText}/>
+            <Item title = {'REMARK'} content = {remarkText} setContent = {setRemarkText} placeholderText = {'...'}/>
           </Card>
 
         </View>
@@ -56,22 +67,25 @@ export default function Add() {
         <TouchableOpacity style={[styles.confirmButtom, { backgroundColor: mainColor }]} onPress={() => createItem()}>
           <Text style={styles.buttomText}>confirm</Text>
         </TouchableOpacity>
-        <TypeModal showModal={showModal}/>
+        <TypeModal modalColor = {OtherColor} showModal={showModal} setShowModal = {setShowModal} setTypeText = {setTypeText}/>
       </View>
-    );
+    </TouchableWithoutFeedback>
+    
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 120,
+    paddingTop: 60,
     paddingHorizontal: 14,
+    backgroundColor: '#fff',
   },
   amountContainer: {
     borderWidth: 2,
     borderRadius: 10,
     position: 'relative',
-   Vertical: 22,
+    Vertical: 22,
     marginTop: 8,
   },
   title: {
@@ -98,8 +112,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',
-    position: 'absolute',
-    bottom: 40,
+    marginTop: 176,
     borderRadius: 16,
     elevation: 3,
     shadowRadius: 4,
