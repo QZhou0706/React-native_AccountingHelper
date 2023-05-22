@@ -5,6 +5,7 @@ import Card from "../shared/card"
 import ModuleCard from "../shared/ModuleCard";
 import Accounts from "./src/account";
 import OverviewContent from "./src/overView";
+import NoDataTip from "./src/noDataTip";
 
 export default function Home({ navigation }) {
 
@@ -30,6 +31,31 @@ export default function Home({ navigation }) {
     navigation.navigate('Details', {item, deleteHandler});
   }
 
+  function RenderDecord() {
+    if(todayData.length === 0) {
+      return (
+        <ModuleCard title={'RECORD'}>
+          <NoDataTip />
+        </ModuleCard>
+      );
+    }
+    else {
+      return (
+        <ModuleCard title={'RECORD'}>
+          {todayData.map((item, index) => (
+            <TouchableOpacity
+              onPress={() => reviewDetails(item)}
+              key={index}>
+              <Card>
+                <Accounts item={item} />
+              </Card>
+            </TouchableOpacity>
+          ))}
+        </ModuleCard>
+      );
+    }
+  }
+
   // filter the data of today
   const todayData = data.filter(item => judgeToday(item.time));
 
@@ -40,7 +66,8 @@ export default function Home({ navigation }) {
         <OverviewContent />
       </ModuleCard>
 
-      <ModuleCard title={'RECORD'}>
+      <RenderDecord />
+      {/* <ModuleCard title={'RECORD'}>
         {todayData.map((item, index) => (
           <TouchableOpacity
             onPress={() => reviewDetails(item)}
@@ -50,7 +77,7 @@ export default function Home({ navigation }) {
             </Card>
           </TouchableOpacity>
         ))}
-      </ModuleCard>
+      </ModuleCard> */}
 
     </ScrollView>
   );
