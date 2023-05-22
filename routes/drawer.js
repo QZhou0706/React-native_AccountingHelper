@@ -36,7 +36,7 @@ function DrawerNavigator() {
           header: () => <Header navigation={navigation} title='Home' />,
         }
       }} />
-      <Drawer.Screen name="Profile" component={ProfileStack} options={({ navigation }) => {
+      <Drawer.Screen name="ProfileStack" component={ProfileStack} options={({ navigation }) => {
         return {
           drawerIcon: ({ color, size }) => (
             <IonIcons name='ios-person-circle-outline' color={color} size={size} />

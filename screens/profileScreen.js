@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgb(249, 198, 17)',
         shadowOffset: { width: 1, height: 1 },
         shadowColor: '#333',
-        shadowOpacity: 1,
+        shadowOpacity: 0.3,
         shadowRadius: 2,
         marginHorizontal: 4,
         marginVertical: 6,
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
         color: '#818181',
     },
     line: {
-        height: 6,
+        height: 5,
         width: '80%',
         alignSelf: 'center',
         backgroundColor: 'rgb(220, 220, 220)',
