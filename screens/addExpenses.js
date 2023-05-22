@@ -1,4 +1,4 @@
-import react, {useState} from "react";
+import React, { useState } from "react";
 import { View, StyleSheet, Text, TextInput, TouchableOpacity, TouchableWithoutFeedback, Keyboard, Dimensions } from "react-native";
 
 
@@ -15,15 +15,29 @@ function getCurrentDate() {
   const month = parseInt(date.getMonth()) + 1;
   const day = date.getDate();
 
-  return( year + '.' + month + '.' + day );
+  return (year + '.' + month + '.' + day);
 
 }
 
 export default function AddExpenses() {
 
+  const [keyboardShown, setKeyboardShown] = React.useState(false);
+  React.useEffect(() => {
+    const showSubscription = Keyboard.addListener('keyboardDidShow', () => {
+      setKeyboardShown(true);
+    });
+    const hideSubscription = Keyboard.addListener('keyboardDidHide', () => {
+      setKeyboardShown(false);
+    });
+
+    return () => {
+      showSubscription.remove();
+      hideSubscription.remove();
+    };
+  }, []);
 
   const modalWidth = Dimensions.get('window').width * 0.96;
-  const iconWidth = (modalWidth - 48 - 54 ) / 4;
+  const iconWidth = (modalWidth - 48 - 54) / 4;
   const modalHeight = 75 + 36 + 3 * iconWidth;
 
   const [typeText, setTypeText] = useState('fastfood');
@@ -50,48 +64,48 @@ export default function AddExpenses() {
     <TouchableWithoutFeedback onPress={() => {
       Keyboard.dismiss();
     }}>
-      <View style = {styles.container}>
-        <View style = {[styles.amountContainer, {borderColor: mainColor}]}>
-          <View style = {styles.title}>
-            <Text style = {[styles.titleText, {color: mainColor}]}>EXPENSES</Text>
+      <View style={styles.container}>
+        <View style={[styles.amountContainer, { borderColor: mainColor }]}>
+          <View style={styles.title}>
+            <Text style={[styles.titleText, { color: mainColor }]}>EXPENSES</Text>
           </View>
-        <TextInput
-          keyboardType='numeric'
-          style={{ ...styles.amountInput, ...styles.amountPlaceholder, color:mainColor }}
-          value = {amountText}
-          onChangeText = {val => setAmountText(val)}
-          cursorColor = '#fff'
-        />
+          <TextInput
+            keyboardType='numeric'
+            style={{ ...styles.amountInput, ...styles.amountPlaceholder, color: mainColor }}
+            value={amountText}
+            onChangeText={val => setAmountText(val)}
+            cursorColor='#fff'
+          />
         </View>
 
         {/* items */}
         <View>
           <Card>
-            <ReadOnlyItem typeText={typeText} setTypeText = {setTypeText} setShowModal = {setShowModal} />
+            <ReadOnlyItem typeText={typeText} setTypeText={setTypeText} setShowModal={setShowModal} />
           </Card>
 
           <Card>
-            <View style = {styles.itemContainer}>
+            <View style={styles.itemContainer}>
               <Foundation name='clock' size={24} color="#787878" width={20} />
-              <Text style = {styles.text}>TIME</Text>
-              <MyDatePicker setTime = {setTime} color = {mainColor}/>
+              <Text style={styles.text}>TIME</Text>
+              <MyDatePicker setTime={setTime} color={mainColor} />
             </View>
           </Card>
 
           <Card>
-            <Item title = {'REMARK'} content = {remarkText} setContent = {setRemarkText} placeholderText = {'...'}/>
+            <Item title={'REMARK'} content={remarkText} setContent={setRemarkText} placeholderText={'...'} />
           </Card>
 
         </View>
 
         {/* confirm buttom */}
-        <TouchableOpacity style={[styles.confirmButtom, { backgroundColor: mainColor, bottom: keyboardShown? -100:110 }]} onPress={() => createItem()}>
+        <TouchableOpacity style={[styles.confirmButtom, { backgroundColor: mainColor, bottom: keyboardShown ? -100 : 110 }]} onPress={() => createItem()}>
           <Text style={styles.buttomText}>confirm</Text>
         </TouchableOpacity>
-        <TypeModal modalColor = {OtherColor} showModal={showModal} setShowModal = {setShowModal} setTypeText = {setTypeText} modalHeight = {modalHeight}/>
+        <TypeModal modalColor={OtherColor} showModal={showModal} setShowModal={setShowModal} setTypeText={setTypeText} modalHeight={modalHeight} />
       </View>
     </TouchableWithoutFeedback>
-    
+
   );
 }
 
@@ -149,7 +163,7 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     elevation: 3,
     shadowRadius: 4,
-    shadowOffset: {width: 0, height: 2},
+    shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
   },
   buttomText: {
