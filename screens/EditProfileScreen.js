@@ -7,37 +7,36 @@ import { useTheme } from "react-native-paper";
 import { color } from "react-native-reanimated";
 import BottomSheet from 'reanimated-bottom-sheet';
 import Animated from "react-native-reanimated";
+
 const EditProfileScreen = () => {
+    const [userInfo, setUserInfo] = React.useState({
+        name: 'John Doe',
+        username: 'j_doe',
+        location: 'zyfy, china',
+        phone: '180####7048',
+        email: '2804###5342@qq.com',
+        wallet: '$150',
+        orders: '12'
+    });
     const {colors} = useTheme();
-    
-    const renderInner = () => (
-        <Text>hello</Text>
-    );
-    const renderHeader = () => (
-        <View style = {Styles.header}>
-            <View style = {Styles.panelHeader}>
-                <View style = {Styles.panelHandle }> </View>
-            </View>
-        </View>
-    )
-    bs = React.createRef();
-    fall = new Animated.Value(1);
+
+    const handleInputChange = (key, value) => {
+        setUserInfo({
+            ...userInfo,
+            [key]: value
+        });
+    };
+
+    const handleSubmit = () => {
+        // 将参数传到profilescreen
+    };
 
     return (    
         <View style = {Styles.container}>
-            <BottomSheet 
-                ref = {this.bs}
-                snapPoints={[330,0]}
-                renderContent={this.renderInner}
-                renderHeader={this.renderHeader}
-                initialSnap={1}
-                callbackNode={this.fall}
-                enabledGestureInteraction={true}
-            />
-            <Text>Edit Profile</Text>
+            {/* <Text>Edit Profile</Text> */}
             <View style = {{margin:20}}>
                 <View style = {{alignItems:'center'}}>
-                    <TouchableOpacity onPress = {()=>this.bs.current.snapTo(0)}>
+                    <TouchableOpacity onPress = {()=>{}}>
                         <View style = {{
                             height:100,
                             width:100,
@@ -71,7 +70,7 @@ const EditProfileScreen = () => {
                         </View>
                     </TouchableOpacity>
                     <Text style = {{marginTop:10,fontSize:18,fontWeight:'bold'}}>
-                        zGoofy
+                        {userInfo.username}
                     </Text>
                 </View>
                 <View style = {Styles.action}>
@@ -79,11 +78,12 @@ const EditProfileScreen = () => {
                     <TextInput
                         placeholder="First Name"
                         placeholderTextColor="#666666"
-                        keyboardType='number-pad'
-                        autoCapitalize={false}
+                        // autoCapitalize={"none"}
                         style = {[Styles.textinput,{
                             color:colors.text
                         }]}
+                        onChangeText={(value) => handleInputChange('name', value)}
+                        value={userInfo.name}
                     />
                 </View>
                 <View style = {Styles.action}>
@@ -91,67 +91,79 @@ const EditProfileScreen = () => {
                 <TextInput
                     placeholder="Last Name"
                     placeholderTextColor="#666666"
-                    autoCapitalize={false}
-                    style = {[Styles.textinput,{
+                    // autoCapitalize={"none"}
+                    style={[Styles.textinput,{
                         color:colors.text
                     }]}
+                    onChangeText={(value) => handleInputChange('username', value)}
+                    value={userInfo.username}
                 />
                 </View>
-                <View style = {Styles.action}>
-                <FontAwesome name = "phone" color={colors.text} size={20}/>
-                <TextInput
-                    placeholder="Phone"
-                    placeholderTextColor="#666666"
-                    autoCapitalize={false}
-                    style = {[Styles.textinput,{
-                        color:colors.text
-                    }]}
-                />
+                <View style={Styles.action}>
+                    <FontAwesome name="phone" color={colors.text} size={20} />
+                    <TextInput
+                        placeholder="Phone"
+                        keyboardType='number-pad'
+                        placeholderTextColor="#666666"
+                        // autoCapitalize={"none"}
+                        style={[Styles.textinput,{
+                            color:colors.text
+                        }]}
+                        onChangeText={(value) => handleInputChange('phone', value)}
+                        value={userInfo.phone}
+                    />
                 </View>
-                <View style = {Styles.action}>
-                <FontAwesome name = "envelope-o" color={colors.text} size={20}/>
-                <TextInput
-                    placeholder="Email"
-                    placeholderTextColor="#666666"
-                    keyboardType='email-address'
-                    autoCapitalize={false}
-                    style = {[Styles.textinput,{
-                        color:colors.text
-                    }]}
-                />
+                <View style={Styles.action}>
+                    <FontAwesome name="envelope-o" color={colors.text} size={20} />
+                    <TextInput
+                        placeholder="Email"
+                        placeholderTextColor="#666666"
+                        keyboardType='email-address'
+                        // autoCapitalize={"none"}
+                        style={[Styles.textinput,{
+                            color:colors.text
+                        }]}
+                        onChangeText={(value) => handleInputChange('email', value)}
+                        value={userInfo.email}
+                    />
                 </View>
-                <View style = {Styles.action}>
-                <FontAwesome name = "globe" color={colors.text} size={20}/>
-                <TextInput
-                    placeholder="Country"
-                    placeholderTextColor="#666666"
-                    autoCapitalize={false}
-                    style = {[Styles.textinput,{
-                        color:colors.text
-                    }]}
-                />
+                <View style={Styles.action}>
+                    <FontAwesome name="globe" color={colors.text} size={20} />
+                    <TextInput
+                        placeholder="Country"
+                        placeholderTextColor="#666666"
+                        // autoCapitalize={"none"}
+                        style={[Styles.textinput,{
+                            color:colors.text
+                        }]}
+                        onChangeText={(value) => handleInputChange('location', value)}
+                        value={userInfo.location}
+                    />
                 </View>
-                <View style = {Styles.action}>
-                <FontAwesome name = "map-marker" color={colors.text} size={20}/>
-                <TextInput
-                    placeholder="City"
-                    placeholderTextColor="#666666"
-                    autoCapitalize={false}
-                    style = {[Styles.textinput,{
-                        color:colors.text
-                    }]}
-                />
+                <View style={Styles.action}>
+                    <FontAwesome name="map-marker" color={colors.text} size={20} />
+                    <TextInput
+                        placeholder="City"
+                        placeholderTextColor="#666666"
+                        // autoCapitalize={"none"}
+                        style={[Styles.textinput,{
+                            color:colors.text
+                        }]}
+                        onChangeText={(value) => handleInputChange('city', value)}
+                        value={userInfo.city}
+                    />
                 </View>
-                <TouchableOpacity style={Styles.commandButton} onPress={()=>{}}>
-                    <Text style = {Styles.panelBUttonTitle}>Submit</Text>
+                <TouchableOpacity style={Styles.commandButton} onPress={handleSubmit}>
+                    <Text style={Styles.panelBUttonTitle}>Submit</Text>
                 </TouchableOpacity>
             </View>
-
+            {/* <View>
+                <Text >{userInfo.name}</Text>
+            </View> */}
         </View>
     );
 
 };
-
 
 
 
