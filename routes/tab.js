@@ -132,7 +132,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     top: 5,
-
   },
   tabButton: {
     width: 40,
@@ -144,6 +143,9 @@ const styles = StyleSheet.create({
     borderColor: '#fff',
     borderRadius: 25,
     borderWidth: 5,
-    elevation: 1,
+    elevation: 2,
+    shadowColor: '#333',
+    shadowOffset: {width: 1, height: 3},
+    shadowOpacity: 0.4,
   }
 })

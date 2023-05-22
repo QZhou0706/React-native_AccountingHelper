@@ -1,19 +1,24 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Modal } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, LogBox } from 'react-native';
+
+LogBox.ignoreLogs([
+  'Non-serializable values were found in the navigation state',
+]);
+
 import BillCard from './src/billCard';
 import TipModal from './src/tipModal';
 
 export default function Details({ navigation, route }) {
   const [showModal, setShowModal] = useState(false);
   const item = route.params.item;
-
+  const deleteHandler = route.params.deleteHandler;
   return (
     <View style={styles.container}>
       <BillCard item={item} />
       <TouchableOpacity style={styles.deleteButton} onPress={() => setShowModal(true)}>
         <Text style={styles.text}>DELETE</Text>
       </TouchableOpacity>
-      <TipModal showModal={showModal} setShowModal={setShowModal} />
+      <TipModal item={item} navigation={navigation} showModal={showModal} setShowModal={setShowModal} deleteHandler={deleteHandler} />
     </View>
   );
 }
