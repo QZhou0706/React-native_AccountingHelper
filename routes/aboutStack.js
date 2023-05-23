@@ -1,6 +1,5 @@
 import 'react-native-gesture-handler';
-import { HeaderStyleInterpolators, createStackNavigator } from '@react-navigation/stack';
-import Header from '../shared/header';
+import { createStackNavigator } from '@react-navigation/stack';
 import About from '../screens/about';
 
 const Stack = createStackNavigator();

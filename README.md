@@ -12,6 +12,22 @@ Happy Accounting!
 
 
 
+### Running the App
+
+---
+
+To run the guide locally, you will need to:
+
+1. Install Expo CLI and Expo Go. Check [here](https://docs.expo.dev/get-started/installation/#expo-cli) for detailed instructions.
+2. Connect to the same wireless network as your computer.
+3. Running in simulator or Scan QR code from your terminal
+
+If you have any questions, please check [here](https://reactnative.dev/docs/environment-setup).
+
+---
+
+
+
 ### Github
 
 ---
@@ -25,6 +41,7 @@ Teammates & Labor:
   - Project file structure configuration
   - Navigations between Screens
   - UI design
+  - Animatable Componests
   - Passing parameters ...
 
 - QQ Dai
@@ -44,25 +61,209 @@ Teammates & Labor:
 
 
 
-### Running the App
+### Layout
 
 ---
 
-To run the guide locally, you will need to:
+- Home
 
-1. Install Expo CLI and Expo Go. Check [here](https://docs.expo.dev/get-started/installation/#expo-cli) for detailed instructions.
-2. Connect to the same wireless network as your computer.
-3. Running in simulator or Scan QR code from your terminal
+![](https://cdn.jsdelivr.net/gh/QZhou0706/picGoStorage@master/img/Screenshot_1684831906.png)
 
-If you have any questions, please check [here](https://reactnative.dev/docs/environment-setup).
+- Details
+
+![](https://cdn.jsdelivr.net/gh/QZhou0706/picGoStorage@master/img/Screenshot_1684831924.png)
+
+We will display other screens in our presentation. ( \^_\^)
+
+
+
+### Features (some Examples)
 
 ---
 
+- Stateless components
 
+```js
+import { View, StyleSheet,Text } from "react-native";
 
-### Structure
+export default function ModuleCard(props) {
+    return (
+        <View style = {styles.box}>
+            <View style = {styles.titleWrapper}>
+                <View style = {styles.rectangle}></View>
+                <Text style = {styles.title}>{props.title}</Text>
+            </View>
+            {props.children}
+        </View>
+    );
+}
+```
 
----
+- Stateful components
+
+```js
+const RenderRecord = () => {
+    if (todayData.length < 1) {
+      return (
+        <ModuleCard title={'RECORD'}>
+          <NoDataTip />
+        </ModuleCard>
+      );
+    }
+    else {
+      return (
+        <ModuleCard title={'RECORD'}>
+          {todayData.map((item, index) => (
+            <TouchableOpacity
+              onPress={() => reviewDetails(item)}
+              key={index}>
+              <Card>
+                <Accounts item={item} />
+              </Card>
+            </TouchableOpacity>
+          ))}
+        </ModuleCard>
+      );
+    }
+  }
+```
+
+- Navigation system
+
+1. Stack Navigation
+
+```js
+const Stack = createStackNavigator();
+
+function HomeStack() {
+  return (
+    <Stack.Navigator screenOptions={{
+      headerShown: false,
+    }}>
+      <Stack.Screen name="DrawerNavigator" component={DrawerNavigator} />
+      <Stack.Screen name="Details" component={Details} options={{
+        headerShown: true,
+      }}/>
+    </Stack.Navigator>
+  );
+};
+
+export default HomeStack;
+```
+
+2. Drawer Navigation
+
+```js
+const Drawer = createDrawerNavigator();
+
+function DrawerNavigator() {
+  return (
+    <Drawer.Navigator
+      useLegacyImplementation
+      screenOptions={() => {
+        return {
+          drawerActiveBackgroundColor: '#FDCB18',
+          drawerActiveTintColor: '#333',
+          drawerInactiveTintColor: '#333',
+          drawerLabelStyle: {
+            marginLeft: -25,
+            fontFamily: 'nunito-regular',
+            fontSize: 17,
+            borderRadius: 20,
+          },
+        }
+      }}
+      drawerContent={props => <CustomDrawer {...props} />}
+    >
+      <Drawer.Screen name='TabNavigator' component={TabNavigator} options={({ navigation }) => {
+        return {
+          drawerIcon: ({ color, size }) => (
+            <IonIcons name='home-outline' color={color} size={size} />
+          ),
+          header: () => <Header navigation={navigation} title='Home' />,
+        }
+      }} />
+      <Drawer.Screen name="ProfileStack" component={ProfileStack} options={({ navigation }) => {
+        return {
+          drawerIcon: ({ color, size }) => (
+            <IonIcons name='ios-person-circle-outline' color={color} size={size} />
+          ),
+          header: () => <Header navigation={navigation} title='Profile' />,
+        }
+      }} />
+      <Drawer.Screen name="About" component={About} options={({ navigation }) => {
+        return {
+          drawerIcon: ({ color, size }) => (
+            <IonIcons name='document-text-outline' color={color} size={size} />
+          ),
+          header: () => <Header navigation={navigation} title='About' />,
+        }
+      }} />
+    </Drawer.Navigator>
+  );
+}
+
+export default DrawerNavigator;
+```
+
+3. Top Tab Navigation
+
+```js
+const Tab = createMaterialTopTabNavigator();
+
+export default function SheetTab() {
+  return (
+      <Tab.Navigator screenOptions={{
+      }}>
+        <Tab.Screen name="IncomeSheet" component={IncomeSheet} />
+        <Tab.Screen name="ExpSheet" component={ExpSheet} />
+      </Tab.Navigator>
+  );
+}
+```
+
+4. Bottom Tab Navigation
+
+```js
+const Tab = createBottomTabNavigator();
+const TabNavigator = () => {
+  return (
+    <Tab.Navigator
+      screenOptions={() => {
+        return {
+          headerShown: false,
+          tabBarShowLabel: false,
+          tabBarStyle: {
+            height: 60,
+            bottom: keyboardShown ? -100 : 20,
+            position: 'absolute',
+            borderRadius: 16,
+            left: 16,
+            right: 16,
+            alignItems: 'center',
+            justifyContent: 'center',
+            shadowColor: '#ccc',
+            shadowOffset: {width: 0, height: 1},
+            shadowOpacity: 0.3,
+          },
+        }
+      }}>
+      {TabList.map((item, index) => {
+        return (
+          <Tab.Screen name={item.route} component={item.component} options={{
+            tabBarButton: (props) => (
+              <TabButton {...props} item={item} />
+            ),
+          }}
+            key={index} />
+        )
+      })}
+    </Tab.Navigator>
+  )
+}
+```
+
+- Code organization 
 
 ```
 ├── App.js
@@ -72,8 +273,8 @@ If you have any questions, please check [here](https://reactnative.dev/docs/envi
 ├── global
 │   ├── itemData.js
 │   └── userInfo.js
-├── routes
-├── screens
+├── routes		// about navigations
+├── screens		// all of our screens
 │   ├── about.js
 │   ├── addExpense.js
 │   ├── addIncome.js
@@ -86,16 +287,15 @@ If you have any questions, please check [here](https://reactnative.dev/docs/envi
 │   ├── showIncome.js
 │   ├── src
 │   └── suggestion.js
-├── shared
-│   ├── card.js
-│   ├── colorCard.js
-│   ├── header.js
-│   ├── ModuleCard.js
-│   ├── rect.js
-│   ├── sheetCard.js
-│   └── whiteCard.js
-└── styles
-    └── global.js
+└── shared		// some shared components
+    ├── card.js
+    ├── colorCard.js
+    ├── header.js
+    ├── ModuleCard.js
+    ├── rect.js
+    ├── sheetCard.js
+    └── whiteCard.js
+
 ```
 
 ---
@@ -117,6 +317,7 @@ If you have any questions, please check [here](https://reactnative.dev/docs/envi
   - IonIcons
   - Foundation
   - MaterialIcons
+- Animatable Componests
 - ETC.
 
 ---

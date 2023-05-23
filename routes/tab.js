@@ -8,7 +8,6 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import AntIcon from "react-native-vector-icons/AntDesign";
 
 import Home from '../screens/home';
-import AboutStack from './aboutStack';
 import TopTabNavigator from './topTab';
 import SheetTab from './sheetTab';
 
