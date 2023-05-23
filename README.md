@@ -117,6 +117,7 @@ If you have any questions, please check [here](https://reactnative.dev/docs/envi
   - IonIcons
   - Foundation
   - MaterialIcons
+- ETC.
 
 ---
 
