@@ -12,6 +12,38 @@ Happy Accounting!
 
 
 
+### Github
+
+---
+
+Link:  `git@github.com:QZhou0706/React-native_AccountingHelper.git`
+
+Teammates & Labor: 
+
+- Q Zhou
+
+  - Project file structure configuration
+  - Navigations between Screens
+  - UI design
+  - Passing parameters ...
+
+- QQ Dai
+
+  - Details of Screens
+
+  - Some Modal Cards components
+  - Profile Screen
+  - main Screens of Home
+
+- YFY Zhao
+
+  - Data Sheet Screen
+  - ProfileEditing Screen
+
+---
+
+
+
 ### Running the App
 
 ---
@@ -80,5 +112,11 @@ If you have any questions, please check [here](https://reactnative.dev/docs/envi
   - Top Tab Navigation
   - Bottom Tab Navigation
 
-- [React-native chart kit](https://github.com/indiespirit/react-native-chart-kit)
-- 
+- [React native chart kit](https://github.com/indiespirit/react-native-chart-kit)
+- [React native icon](https://github.com/oblador/react-native-vector-icons)
+  - IonIcons
+  - Foundation
+  - MaterialIcons
+
+---
+

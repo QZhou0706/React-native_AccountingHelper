@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, Dimensions, FlatList, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, Dimensions, StyleSheet, ScrollView } from 'react-native';
 import {
   LineChart,
   BarChart,
