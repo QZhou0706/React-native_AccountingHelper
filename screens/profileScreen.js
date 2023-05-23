@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, Image, Text, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, Image, Text, TouchableOpacity, ScrollView } from 'react-native';
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import WhiteCard from '../shared/whiteCard';
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     },
     wrapper: {
         width: '100%',
-        height: '85%',
+        height: '82%',
         backgroundColor: '#fff',
         position: 'absolute',
         bottom: 0,

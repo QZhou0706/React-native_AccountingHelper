@@ -120,7 +120,7 @@ export default function IncomeSheet({navigation}) {
           </View>
           <View style={{ width: 30 }} />
           <View>
-            <Text style={{ fontWeight: '300', color: 'grey', fontSize: 12 }}>Accumulated income transactions</Text>
+            <Text style={{ fontWeight: '300', color: 'grey', fontSize: 12 }}>Accumulated income</Text>
             <Text style={{ fontWeight: '600', fontSize: 14 }}>{totalIncomeNum}</Text>
           </View>
         </View>
@@ -157,7 +157,7 @@ export default function IncomeSheet({navigation}) {
           })
         }
       </SheetCard>
-      <View style = {{height: 80}}></View>
+      <View style = {{height: 90}}></View>
     </ScrollView>
   )
 }
@@ -180,7 +180,7 @@ const styles = StyleSheet.create({
   type: {
     fontSize: 16,
     color: '#333',
-    width:64,
+    width:66,
   },
   value: {
     marginLeft: 5,

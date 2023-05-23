@@ -70,7 +70,7 @@ export default function Home({ navigation }) {
         <OverviewContent todayData={todayData} />
       </ModuleCard>
       <RenderRecord />
-      <View style = {{height: 80}}></View>
+      <View style = {{height: 90}}></View>
     </ScrollView>
   );
 }

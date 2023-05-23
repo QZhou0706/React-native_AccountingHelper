@@ -53,7 +53,6 @@ const styles = StyleSheet.create({
     text: {
         fontSize: 16,
         fontFamily: 'nunito-regular',
-        textAlignVertical: 'center',
         marginLeft: 10,
         marginBottom: 2,
         color: '#F76666',
@@ -62,8 +61,8 @@ const styles = StyleSheet.create({
         fontFamily: 'nunito-regular',
         color: 'rgb(100, 100, 100)',
         fontSize: 12,
-        textAlignVertical: 'center',
         marginLeft: 10,
+        alignSelf: 'center',
     },
     title: {
         fontFamily: 'nunito-bold',

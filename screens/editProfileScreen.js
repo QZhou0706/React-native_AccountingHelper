@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, SafeAreaView, TouchableOpacity, TextInput, ImageBackground, Text } from 'react-native';
+import { View, StyleSheet, SafeAreaView, TouchableOpacity, TextInput, ImageBackground, Text, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { useTheme } from "react-native-paper";
@@ -22,7 +22,10 @@ const EditProfileScreen = ({ navigation }) => {
   };
 
   return (
-    <View style={Styles.container}>
+    <TouchableWithoutFeedback onPress={() => {
+      Keyboard.dismiss();
+    }}>
+      <View style={Styles.container}>
       <View style={{ margin: 20 }}>
         <View style={{ alignItems: 'center' }}>
           <TouchableOpacity onPress={() => { }}>
@@ -66,7 +69,8 @@ const EditProfileScreen = ({ navigation }) => {
             placeholder="Name"
             placeholderTextColor="#666666"
             style={[Styles.textinput, {
-              color: colors.text
+              color: colors.text, 
+              paddingTop: 8
             }]}
             onChangeText={(value) => handleInputChange('name', value)}
             value={userInfo.name}
@@ -78,7 +82,8 @@ const EditProfileScreen = ({ navigation }) => {
             placeholder="Age"
             placeholderTextColor="#666666"
             style={[Styles.textinput, {
-              color: colors.text
+              color: colors.text,
+              paddingTop: 8
             }]}
             onChangeText={(value) => handleInputChange('age', value)}
             value={userInfo.age}
@@ -91,7 +96,8 @@ const EditProfileScreen = ({ navigation }) => {
             keyboardType='number-pad'
             placeholderTextColor="#666666"
             style={[Styles.textinput, {
-              color: colors.text
+              color: colors.text,
+              paddingTop: 8
             }]}
             onChangeText={(value) => handleInputChange('phone', value)}
             value={userInfo.phone}
@@ -104,7 +110,8 @@ const EditProfileScreen = ({ navigation }) => {
             placeholderTextColor="#666666"
             keyboardType='email-address'
             style={[Styles.textinput, {
-              color: colors.text
+              color: colors.text,
+              paddingTop: 8
             }]}
             onChangeText={(value) => handleInputChange('email', value)}
             value={userInfo.email}
@@ -116,7 +123,8 @@ const EditProfileScreen = ({ navigation }) => {
             placeholder="Country"
             placeholderTextColor="#666666"
             style={[Styles.textinput, {
-              color: colors.text
+              color: colors.text,
+              paddingTop: 8
             }]}
             onChangeText={(value) => handleInputChange('location', value)}
             value={userInfo.location}
@@ -127,6 +135,7 @@ const EditProfileScreen = ({ navigation }) => {
         </TouchableOpacity>
       </View>
     </View>
+    </TouchableWithoutFeedback>
   );
 
 };
@@ -139,14 +148,19 @@ export default EditProfileScreen;
 const Styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 30,
+    paddingTop: 30,
+    backgroundColor: '#fff',
   },
   commandButton: {
     padding: 15,
     borderRadius: 10,
-    backgroundColor: '#FF6347',
+    backgroundColor: '#F5A80F',
     alignItems: 'center',
-    marginTop: 10,
+    marginTop: 40,
+    elevation: 3,
+    shadowRadius: 3,
+    shadowOffset: {width: 0, height: 2},
+    shadowOpacity: 0.2,
   },
   panel: {
     padding: 20,

@@ -14,7 +14,7 @@ import SheetTab from './sheetTab';
 const TabList = [
   { route: 'Home', label: 'Home', iconType: Ionicons, activeIcon: 'home', inActiveIcon: 'home-outline', component: Home },
   { route: 'AddItem', label: 'AddItem', iconType: AntIcon, activeIcon: 'plussquare', inActiveIcon: 'plussquareo', component: TopTabNavigator },
-  { route: 'Sheet', label: 'Sheet', iconType: Ionicons, activeIcon: 'bar-chart', inActiveIcon: 'bar-chart-outline', component: SheetTab }
+  { route: 'Sheet', label: 'Sheet', iconType: Ionicons, activeIcon: 'pie-chart', inActiveIcon: 'pie-chart-outline', component: SheetTab }
 ]
 
 const Tab = createBottomTabNavigator();
