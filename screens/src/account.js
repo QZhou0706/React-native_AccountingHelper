@@ -16,6 +16,7 @@ export default function Accounts({item}) {
                 <View flexDirection = 'row'>
                     <Text style = {styles.text}>{item.behavior}</Text>
                     <Text style = {styles.text}>{item.amount}</Text>
+                    <Text style = {styles.timeText}>{item.time}</Text>
                 </View>
             </View>
             <View justifyContent = 'center'>
@@ -56,6 +57,13 @@ const styles = StyleSheet.create({
         marginLeft: 10,
         marginBottom: 2,
         color: '#F76666',
+    },
+    timeText: {
+        fontFamily: 'nunito-regular',
+        color: 'rgb(100, 100, 100)',
+        fontSize: 12,
+        textAlignVertical: 'center',
+        marginLeft: 10,
     },
     title: {
         fontFamily: 'nunito-bold',

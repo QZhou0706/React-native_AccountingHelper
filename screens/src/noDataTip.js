@@ -5,7 +5,7 @@ import { StyleSheet, Text, View } from "react-native";
 export default function NoDataTip() {
     return (
         <View style = {styles.container}>
-            <Text style = {styles.text}>OOPS! NO DATA TODAY</Text>
+            <Text style = {styles.text}>- - - OOPS! NO HISTORY DATA - - -</Text>
         </View>
     );
 }
@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     },
     text: {
         fontFamily: 'nunito-regular',
-        fontSize: 18,
+        fontSize: 17,
         color: 'rgb(80, 80, 80)',
     }
 })

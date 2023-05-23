@@ -4,8 +4,8 @@ export var data = [
   { type: 'shop', behavior: 'expenditure', amount: '150', time: '2023-05-21', remark: 'none', uuid: '123456' },
   { type: 'business', behavior: 'income', amount: '150', time: '2023-05-21', remark: 'none', uuid: '1234567' },
   { type: 'shop', behavior: 'expenditure', amount: '150', time: '2023-05-23', remark: 'none', uuid: '3214' },
-  { type: 'shop', behavior: 'expenditure', amount: '200', time: '2023-05-24', remark: 'none', uuid: '1235123' },
-  { type: 'business', behavior: 'income', amount: '150', time: '2023-05-23', remark: 'none', uuid: '12345123' },
+  { type: 'shop', behavior: 'expenditure', amount: '200', time: '2023-05-23', remark: 'none', uuid: '1235123' },
+  { type: 'business', behavior: 'income', amount: '150', time: '2023-05-24', remark: 'none', uuid: '12345123' },
   { type: 'festival', behavior: 'income', amount: '1000', time: '2023-05-24', remark: 'none', uuid: '16804968' },
 ]
 

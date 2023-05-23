@@ -106,21 +106,21 @@ export default function IncomeSheet({navigation}) {
     data: values
   };
   return (
-    <ScrollView style={styles.container}>
-      <Text style={{ fontWeight: '800', fontSize: 16, marginLeft: 6, marginTop: 10 }}>{data[0].time} to {data[Math.min(6, data.length - 1)].time}</Text>
+    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
+      <Text style={{ fontWeight: '800', fontSize: 18, marginLeft: 6, marginTop: 10, color: '#F5A80F' }}>{data[0].time} to {data[Math.min(6, data.length - 1)].time}</Text>
       <SheetCard>
-        <Text style={{ fontWeight: '800', fontSize: 16 }}>Overview of expenditure trends</Text>
+        <Text style={{ fontWeight: '800', fontSize: 16, alignSelf: 'center' }}>Overview of incomes trends</Text>
         <View style={styles.separator} />
-        <Text style={{ fontWeight: '300', color: 'grey', fontSize: 12 }}>Maximum expenditure</Text>
-        <Text style={{ fontWeight: '300', fontSize: 13 }}>In the past seven days, you have spent <Text style={{ color: 'red' }}>${totalIncome}</Text></Text>
+        <Text style={{ fontWeight: '300', color: 'grey', fontSize: 12 }}>Maximum totalIncomeNum</Text>
+        <Text style={{ fontWeight: '300', fontSize: 13 }}>In the past seven days, you have earn <Text style={{ color: 'red' }}>${totalIncome}</Text></Text>
         <View style={{ flexDirection: 'row', marginTop: 15 }}>
           <View>
-            <Text style={{ fontWeight: '300', color: 'grey', fontSize: 12 }}>Average daily expenditure</Text>
+            <Text style={{ fontWeight: '300', color: 'grey', fontSize: 12 }}>Average daily incomes</Text>
             <Text style={{ fontWeight: '600', fontSize: 14 }}>{(totalIncome / 7).toFixed(2)}</Text>
           </View>
           <View style={{ width: 30 }} />
           <View>
-            <Text style={{ fontWeight: '300', color: 'grey', fontSize: 12 }}>Accumulated expenditure transactions</Text>
+            <Text style={{ fontWeight: '300', color: 'grey', fontSize: 12 }}>Accumulated income transactions</Text>
             <Text style={{ fontWeight: '600', fontSize: 14 }}>{totalIncomeNum}</Text>
           </View>
         </View>
@@ -132,7 +132,7 @@ export default function IncomeSheet({navigation}) {
         />
       </SheetCard>
       <SheetCard>
-        <Text style={{ fontWeight: '800', fontSize: 16 }}>Overview of expenditure proportion</Text>
+        <Text style={{ fontWeight: '800', fontSize: 16, alignSelf: 'center' }}>Overview of income proportion</Text>
         <View style={styles.separator} />
         <ProgressChart
           data={pro_data}
@@ -157,9 +157,7 @@ export default function IncomeSheet({navigation}) {
           })
         }
       </SheetCard>
-
-
-
+      <View style = {{height: 80}}></View>
     </ScrollView>
   )
 }
@@ -170,7 +168,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     padding: 3,
     marginTop: 10,
-    marginRight: 10,
+    marginHorizontal: 6,
   },
   item: {
     margin: 5,
@@ -180,9 +178,9 @@ const styles = StyleSheet.create({
     marginBottom: 5
   },
   type: {
-    flex: 1,
     fontSize: 16,
     color: '#333',
+    width:64,
   },
   value: {
     marginLeft: 5,

@@ -16,7 +16,7 @@ export default function OverviewContent({ todayData }) {
       <Text style={[styles.text, styles.date]}>{currentTime}</Text>
       <View style={styles.totalAmountContainer}>
         <Text style={styles.title}>Today's balance</Text>
-        <Text style={styles.colorfulText}>{balance < 0 ? '-' : '+' + '￥' + Math.abs(balance)}</Text>
+        <Text style={styles.colorfulText}>{(balance < 0 ? '-' : '+') + '￥' + Math.abs(balance)}</Text>
       </View>
       <View style={[styles.dataContainer, { marginBottom: 15 }]}>
         <Text style={styles.barText}>EXPENSES</Text>

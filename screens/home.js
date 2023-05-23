@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, TouchableOpacity, ScrollView } from "react-native";
+import { StyleSheet, TouchableOpacity, ScrollView, View } from "react-native";
 
 import Card from "../shared/card"
 import ModuleCard from "../shared/ModuleCard";
@@ -36,17 +36,17 @@ export default function Home({ navigation }) {
 
   
   function RenderRecord() {
-    if (todayData.length < 1) {
+    if (data.length < 1) {
       return (
-        <ModuleCard title={'RECORD'}>
+        <ModuleCard title={'HISTORY'}>
           <NoDataTip />
         </ModuleCard>
       );
     }
     else {
       return (
-        <ModuleCard title={'RECORD'}>
-          {todayData.map((item, index) => (
+        <ModuleCard title={'HISTORY'}>
+          {data.map((item, index) => (
             <TouchableOpacity
               onPress={() => reviewDetails(item)}
               key={index}>
@@ -70,6 +70,7 @@ export default function Home({ navigation }) {
         <OverviewContent todayData={todayData} />
       </ModuleCard>
       <RenderRecord />
+      <View style = {{height: 80}}></View>
     </ScrollView>
   );
 }
