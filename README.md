@@ -28,3 +28,57 @@ If you have any questions, please check [here](https://reactnative.dev/docs/envi
 
 
 
+### Structure
+
+---
+
+```
+├── App.js
+├── app.json
+├── assets
+├── babel.config.js
+├── global
+│   ├── itemData.js
+│   └── userInfo.js
+├── routes
+├── screens
+│   ├── about.js
+│   ├── addExpense.js
+│   ├── addIncome.js
+│   ├── details.js
+│   ├── editProfileScreen.js
+│   ├── home.js
+│   ├── profileScreen.js
+│   ├── reviewDetails.js
+│   ├── showExp.js
+│   ├── showIncome.js
+│   ├── src
+│   └── suggestion.js
+├── shared
+│   ├── card.js
+│   ├── colorCard.js
+│   ├── header.js
+│   ├── ModuleCard.js
+│   ├── rect.js
+│   ├── sheetCard.js
+│   └── whiteCard.js
+└── styles
+    └── global.js
+```
+
+---
+
+
+
+### Main APIs
+
+---
+
+- [React Navigation](https://reactnavigation.org/)
+  - Stack Navigation
+  - Drawer Navigation
+  - Top Tab Navigation
+  - Bottom Tab Navigation
+
+- [React-native chart kit](https://github.com/indiespirit/react-native-chart-kit)
+- 
