@@ -31,13 +31,12 @@ const EditProfileScreen = ({ navigation }) => {
               width: 100,
               borderRadius: 15,
               justifyContent: 'center',
+              alignItems: 'center'
             }}>
               <ImageBackground
-                source={{
-                  uri: "https://cdn.pixabay.com/photo/2023/04/28/14/35/dog-7956828_960_720.jpg"
-                }}
-                style={{ height: 100, width: 100 }}
-                imageStyle={{ borderRadius: 15 }}
+                source={require('../assets/images/tx1.jpg')}
+                style={{ height: 130, width: 130 }}
+                imageStyle={{ borderRadius: 100 }}
               >
                 <View style={{
                   flex: 1,
