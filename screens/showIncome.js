@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, Dimensions, FlatList, StyleSheet, ScrollView } from 'react-native';
 import {
   LineChart,
@@ -11,7 +11,7 @@ import {
 // import Svg, { Rect, SvgAst } from 'react-native-svg';
 import SheetCard from "../shared/sheetCard";
 import Rect from "../shared/rect";
-import { data as g_data } from '../global/itemData';
+import { data } from '../global/itemData';
 const chartConfig = {
   backgroundGradientFrom: "#1E2923",
   backgroundGradientFromOpacity: 0,
@@ -24,9 +24,6 @@ const chartConfig = {
 };
 
 const screenWidth = Dimensions.get("window").width;
-const data = g_data;
-
-
 const getIncomeData = (data) => {
   return data.filter(item => item.behavior === 'income');
 };
@@ -54,7 +51,22 @@ const mergeddata = Object.values(data.reduce((acc, cur) => {
 }, {})).map(({ time, amount }) => ({ time, amount }));
 
 
-export default function IncomeSheet() {
+export default function IncomeSheet({navigation}) {
+
+  const [datas, setDatas] = useState(data);
+
+  useEffect(() => {
+    // Add a listener to the navigation focus event
+    const unsubscribe = navigation.addListener('focus', () => {
+      setDatas(data);
+    });
+    // Remove the listener when the component unmounts
+    return unsubscribe;
+  }, [navigation, data]);
+
+  
+
+
   const totalIncome = getTotalIncome(data);
   const totalIncomeNum = getTotalIncomeNum(data);
   const income_change_data = {

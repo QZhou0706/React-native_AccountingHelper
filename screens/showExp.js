@@ -6,7 +6,7 @@ import {
 } from "react-native-chart-kit";
 import Rect from "../shared/rect";
 import SheetCard from "../shared/sheetCard";
-import { data as g_data } from '../global/itemData';
+import { data } from '../global/itemData';
 const chartConfig = {
   backgroundGradientFrom: "#1E2923",
   backgroundGradientFromOpacity: 0,
@@ -19,7 +19,6 @@ const chartConfig = {
 };
 
 const now = new Date();
-const data = g_data;
 
 const screenWidth = Dimensions.get("window").width;
 
@@ -52,16 +51,16 @@ const mergeddata = Object.values(data.reduce((acc, cur) => {
 
 export default function ExpSheet({ navigation }) {
 
-  const [datas, setDatas] = useState([]);
+  const [datas, setDatas] = useState(data);
 
   useEffect(() => {
     // Add a listener to the navigation focus event
     const unsubscribe = navigation.addListener('focus', () => {
-      setDatas(g_data);
+      setDatas(data);
     });
     // Remove the listener when the component unmounts
     return unsubscribe;
-  }, [navigation, g_data]);
+  }, [navigation, data]);
 
   const totalExp = getTotalExp(data);
   const TotalExpNum = getTotalExpNum(data);

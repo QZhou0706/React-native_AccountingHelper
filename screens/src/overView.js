@@ -1,6 +1,5 @@
 import { View, StyleSheet, Text } from "react-native";
 import Bar from "./modules/bar";
-import { exp } from "react-native-reanimated";
 
 export default function OverviewContent({ todayData }) {
   const currentData = new Date();

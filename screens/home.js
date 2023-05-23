@@ -8,7 +8,6 @@ import OverviewContent from "./src/overView";
 import NoDataTip from "./src/noDataTip";
 
 import { data, deleteHandler } from '../global/itemData';
-
 export default function Home({ navigation }) {
 
   const [datas, setDatas] = useState(data);
