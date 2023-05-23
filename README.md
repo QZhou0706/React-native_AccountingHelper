@@ -132,6 +132,8 @@ const RenderRecord = () => {
 
 1. Stack Navigation
 
+   ![5B066593@9AB6F963.CC846C6400000000](https://cdn.jsdelivr.net/gh/QZhou0706/picGoStorage@master/img/5B066593@9AB6F963.CC846C6400000000.png)
+
 ```js
 const Stack = createStackNavigator();
 
@@ -160,7 +162,7 @@ function DrawerNavigator() {
   return (
     <Drawer.Navigator
       useLegacyImplementation
-      screenOptions={() => {
+      screenOptions={() => {Overall, we managed to complete this app in a relatively tight timeframe and we are fortunate to see it have such a high degree of completion, with beautiful UI and full functionality. What we need to reflect on is that we spent a lot of time resolving errors and various issues due to our lack of familiarity with Git operations. One regret is that we attempted to obtain OpenAI's API to assist us in providing suggestions, but ultimately failed due to our inability to resolve network proxy issues. In the future, we hope to add networking to the project to achieve even richer functionality.
         return {
           drawerActiveBackgroundColor: '#FDCB18',
           drawerActiveTintColor: '#333',
@@ -300,6 +302,14 @@ const TabNavigator = () => {
 
 ---
 
+### Testing
+
+---
+
+We  debugged our code separately on an Android emulator and an iOS physical device. When we encounter unexpected warnings and errors, sometimes we can directly locate the problematic code based on the error message, while other times we have to identify the faulty code segment by trial and error, such as commenting out a section of code to see if it can be excluded. And we also used the console.log method to print values when passing parameters between different interfaces to check the code.
+
+---
+
 
 
 ### Main APIs
@@ -322,3 +332,6 @@ const TabNavigator = () => {
 
 ---
 
+### Conclusion and future improvement
+
+Overall, we managed to complete this app in a relatively tight timeframe and we are fortunate to see it have such a high degree of completion, with beautiful UI and full functionality. What we need to reflect on is that we spent a lot of time resolving errors and various issues due to our lack of familiarity with Git operations. One regret is that we attempted to obtain OpenAI's API to assist us in providing suggestions, but ultimately failed due to our inability to resolve network proxy issues. In the future, we hope to add networking to the project to achieve even richer functionality.
