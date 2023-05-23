@@ -2,11 +2,7 @@ import React, { useState, useEffect } from "react";
 import { View, Text, Dimensions, FlatList, StyleSheet, ScrollView } from 'react-native';
 import {
   LineChart,
-  BarChart,
-  PieChart,
   ProgressChart,
-  ContributionGraph,
-  StackedBarChart
 } from "react-native-chart-kit";
 import Rect from "../shared/rect";
 import SheetCard from "../shared/sheetCard";
@@ -24,20 +20,8 @@ const chartConfig = {
 
 const now = new Date();
 const data = g_data;
-const screenWidth = Dimensions.get("window").width;
 
-// const data = [
-//     {type: 'food', behavior: 'income', amount: '19', key: 1, time: "2022-01-02"},
-//     {type: 'other', behavior: 'income', amount: '19', key: 1, time: "2022-01-02"},
-//     {type: 'game', behavior: 'expenditure', amount: '29', key: 2, time: "2022-01-03"},
-//     {type: 'game', behavior: 'expenditure', amount: '39', key: 2, time: "2022-01-04"},
-//     {type: 'game', behavior: 'income', amount: '11', key: 3, time: "2022-01-05"},
-//     {type: 'food', behavior: 'income', amount: '77',key: 4, time: "2022-01-06"},
-//     {type: 'food', behavior: 'income', amount: '159', key: 5, time: "2022-01-07"},
-//     {type: 'food', behavior: 'expenditure', amount: '59', key: 6, time: "2022-01-08"},
-//     {type: 'other', behavior: 'income', amount: '39', key: 7, time: "2022-01-09"},
-//     {type: 'food', behavior: 'income', amount: '19',key: 8, time: "2022-01-10"},
-// ]
+const screenWidth = Dimensions.get("window").width;
 
 const getExpData = (data) => {
   return data.filter(item => item.behavior === 'expenditure');
@@ -54,19 +38,6 @@ const getTotalExpNum = (data) => {
   return getExpData(data).length;
 };
 
-const renderItem = ({ item }) => {
-  const { type, value } = item;
-  const barWidth = value * 100;
-
-  return (
-    <View style={styles.item}>
-      <Text style={styles.type}>{type}</Text>
-      <Rect current={value} total={1} />
-
-      <Text style={styles.value}>{value.toFixed(2)}</Text>
-    </View>
-  )
-}
 const mergeddata = Object.values(data.reduce((acc, cur) => {
   const key = cur.time;
   if (!acc[key]) {
@@ -79,7 +50,7 @@ const mergeddata = Object.values(data.reduce((acc, cur) => {
 }, {})).map(({ time, amount }) => ({ time, amount }));
 
 
-export default function ExpSheet({navigation}) {
+export default function ExpSheet({ navigation }) {
 
   const [datas, setDatas] = useState([]);
 
@@ -168,11 +139,19 @@ export default function ExpSheet({navigation}) {
           chartConfig={chartConfig}
           hideLegend={false}
         />
-        <FlatList
-          data={r_data}
-          renderItem={renderItem}
-          keyExtractor={(item => item.type)}
-        />
+        {
+          r_data.map((item, index) => {
+            const { type, value } = item;
+            const barWidth = value * 100;
+            return (
+              <View style={styles.item} key={index}>
+                <Text style={styles.type}>{type}</Text>
+                <Rect current={value} total={1} />
+                <Text style={styles.value}>{value.toFixed(2)}</Text>
+              </View>
+            )
+          })
+        }
       </SheetCard>
 
 

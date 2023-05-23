@@ -3,8 +3,7 @@ import { View, StyleSheet } from "react-native";
 
 export default function Bar({current, total}) {
 
-    const lineWidth = (current / total) * 180;
-
+    const lineWidth = total === 0? 0: (current / total) * 180;
     return (
         <View style = {styles.bar}>
             <View style = {[styles.line, {width: lineWidth}]}>

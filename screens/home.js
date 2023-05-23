@@ -7,7 +7,7 @@ import Accounts from "./src/account";
 import OverviewContent from "./src/overView";
 import NoDataTip from "./src/noDataTip";
 
-import {data, deleteHandler} from '../global/itemData';
+import { data, deleteHandler } from '../global/itemData';
 
 export default function Home({ navigation }) {
 
@@ -32,11 +32,12 @@ export default function Home({ navigation }) {
   }
 
   const reviewDetails = (item) => {
-    navigation.navigate('Details', {item, deleteHandler});
+    navigation.navigate('Details', { item, deleteHandler });
   }
 
-  function RenderDecord() {
-    if(todayData.length === 0) {
+  
+  function RenderRecord() {
+    if (todayData.length < 1) {
       return (
         <ModuleCard title={'RECORD'}>
           <NoDataTip />
@@ -69,7 +70,7 @@ export default function Home({ navigation }) {
       <ModuleCard title={'OVERVIEW'}>
         <OverviewContent todayData={todayData} />
       </ModuleCard>
-      <RenderDecord />
+      <RenderRecord />
     </ScrollView>
   );
 }

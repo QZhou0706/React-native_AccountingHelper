@@ -13,17 +13,17 @@ export default function SheetCard(props) {
 
 const styles = StyleSheet.create({
   cards: {
-    borderRadius: 6,
-    elevation: 3,
+    borderRadius: 20,
+    elevation: 1,
     backgroundColor: '#fff',
-    shadowOffset: { width: 1, height: 1 },
-    shadowColor: '#333',
-    shadowOpacity: 0.9,
-    shadowRadius: 2,
+    shadowOffset: { width: 0, height: 1 },
+    shadowColor: '#ccc',
+    shadowOpacity: 0.3,
+    shadowRadius: 5,
     marginHorizontal: 4,
     marginVertical: 6,
     borderWidth: 2, 
-    borderColor: '#333', 
+    borderColor: '#ccc', 
   },
   cardContext: {
     marginTop: 10,
