@@ -22,12 +22,14 @@ const Tab = createBottomTabNavigator();
 const animate1 = { 0: { scale: 1, translateY: 0 }, 1: { scale: 1.4, translateY: -20 } };
 const animate2 = { 0: { scale: 1.4, translateY: -20 }, 1: { scale: 1, translateY: 0 } };
 
-const circle1 = { 0: { scale: 0 }, 0.3: { scale: .5 }, 0.5: { scale: .3 }, 0.8: { scale: .7 }, 1: { scale: 1 } };
+const circle1 = { 0: { scale: 0 }, 0.3: { scale: .5 }, 0.5: { scale: .3 }, 0.8: { scale: .7 }, 1: { scale: 1 } }; // circle animation
 const circle2 = { 0: { scale: 1 }, 1: { scale: 0 } };
 
 const TabButton = (props) => {
   const { item, onPress, accessibilityState } = props;
+
   const focused = accessibilityState.selected;
+  
   const viewRef = useRef(null);
   const circleRef = useRef(null);
   const textRef = useRef(null);

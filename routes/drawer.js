@@ -7,6 +7,13 @@ import About from '../screens/about';
 import TabNavigator from './tab';
 import ProfileStack from './profileStack';
 
+const DrawerList = [
+  { route: 'TabNavigator', label: 'Home', iconType: IonIcons, Icon: 'ios-person-circle-outline', component: TabNavigator },
+  { route: 'ProfileStack', label: 'Profile', iconType: IonIcons, Icon: 'ios-person-circle-outline', component: ProfileStack },
+  { route: 'About', label: 'About', iconType: IonIcons, Icon: 'document-text-outline', component: About }
+]
+
+
 const Drawer = createDrawerNavigator();
 
 function DrawerNavigator() {
@@ -28,7 +35,20 @@ function DrawerNavigator() {
       }}
       drawerContent={props => <CustomDrawer {...props} />}
     >
-      <Drawer.Screen name='TabNavigator' component={TabNavigator} options={({ navigation }) => {
+      {DrawerList.map((item, index) => {
+        return (
+          <Drawer.Screen name={item.label} component={item.component} options={({ navigation }) => {
+            return {
+              drawerIcon: ({ color, size }) => (
+                <item.iconType name={item.Icon} color={color} size={size} />
+              ),
+              header: () => <Header navigation={navigation} title={item.label} />,
+            }
+          }}
+            key={index} />
+        )
+      })}
+      {/* <Drawer.Screen name='TabNavigator' component={TabNavigator} options={({ navigation }) => {
         return {
           drawerIcon: ({ color, size }) => (
             <IonIcons name='home-outline' color={color} size={size} />
@@ -51,7 +71,7 @@ function DrawerNavigator() {
           ),
           header: () => <Header navigation={navigation} title='About' />,
         }
-      }} />
+      }} /> */}
     </Drawer.Navigator>
   );
 }
