@@ -8,7 +8,7 @@ function About({ navigation }) {
         <Text style={styles.text}>version 1.0.0</Text>
         <View style={styles.authorInfo}>
           <Text style={[styles.text, { color: 'rgb(110, 110, 110)' }]}>author: </Text>
-          <Text style={styles.text}>Aric  Daintryy  Zgoofy</Text>
+          <Text style={styles.text}>Aric  Daintryy  zGoofy</Text>
         </View>
       </View>
       <View style={styles.contentWrapper}>

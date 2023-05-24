@@ -5,6 +5,7 @@ import { View, StyleSheet, Text, TextInput, TouchableOpacity, TouchableWithoutFe
 import Card from "../shared/card";
 import { ReadOnlyItem, Item } from "./src/item";
 import TypeModal from "./src/typeModal";
+import ConFirmTip from "./src/confirmTip";
 
 import { Foundation } from '@expo/vector-icons';
 import { addItemHandler } from "../global/itemData";
@@ -46,6 +47,7 @@ export default function AddExpense() {
   const [remarkText, setRemarkText] = useState('');
 
   const [showModal, setShowModal] = useState(false);
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
 
   const mainColor = '#F5A80F';
   // const mainColor = '#F76666';
@@ -60,6 +62,7 @@ export default function AddExpense() {
     setAmountText('0.00')
     setTime(getCurrentDate())
     setRemarkText('')
+    setShowConfirmModal(true)
   }
 
   return (
@@ -109,6 +112,7 @@ export default function AddExpense() {
           <Text style={styles.buttomText}>confirm</Text>
         </TouchableOpacity>
         <TypeModal modalColor={OtherColor} showModal={showModal} setShowModal={setShowModal} setTypeText={setTypeText} modalHeight={modalHeight} />
+        <ConFirmTip showConfirmModal = {showConfirmModal} setShowConfirmModal={setShowConfirmModal} bottomColor = {mainColor}/>
       </View>
     </TouchableWithoutFeedback>
 
