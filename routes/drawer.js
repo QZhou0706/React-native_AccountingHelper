@@ -48,30 +48,7 @@ function DrawerNavigator() {
             key={index} />
         )
       })}
-      {/* <Drawer.Screen name='TabNavigator' component={TabNavigator} options={({ navigation }) => {
-        return {
-          drawerIcon: ({ color, size }) => (
-            <IonIcons name='home-outline' color={color} size={size} />
-          ),
-          header: () => <Header navigation={navigation} title='Home' />,
-        }
-      }} />
-      <Drawer.Screen name="ProfileStack" component={ProfileStack} options={({ navigation }) => {
-        return {
-          drawerIcon: ({ color, size }) => (
-            <IonIcons name='ios-person-circle-outline' color={color} size={size} />
-          ),
-          header: () => <Header navigation={navigation} title='Profile' />,
-        }
-      }} />
-      <Drawer.Screen name="About" component={About} options={({ navigation }) => {
-        return {
-          drawerIcon: ({ color, size }) => (
-            <IonIcons name='document-text-outline' color={color} size={size} />
-          ),
-          header: () => <Header navigation={navigation} title='About' />,
-        }
-      }} /> */}
+
     </Drawer.Navigator>
   );
 }
